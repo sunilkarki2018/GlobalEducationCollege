@@ -1,0 +1,88 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WhyusViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<!-- feature style 1 -->
+<section id="admin-tabs">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-md-3">
+                <div class="images">
+
+                    @{
+                        int i = 0;
+                        foreach (var item in Model.InstitutionAttributeList.OrderBy(x => x.PlacementOrder))
+                        {
+                            if (i == 0)
+                            {
+                                <div class="imageContainer active" data-tab-id="1">
+                                    <img src="@item.ThumbnailImageLink" alt="images">
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="imageContainer" data-tab-id="1">
+                                    <img src="@item.ThumbnailImageLink" alt="images">
+                                </div>
+                            }
+
+                        }
+                    }
+
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="custom-tab-container">
+                    <div class="tab-menu">
+                        <ul class="list-unstyled tab-custom-menu">
+                            @{
+                                foreach (var item in Model.InstitutionAttributeList.OrderBy(x => x.PlacementOrder))
+                                {
+                                    if (i == 0)
+                                    {
+                                        <li data-tab-id="1" class="active">@item.Title</li>
+                                    }
+                                    else
+                                    {
+                                        <li data-tab-id="2">@item.Title</li>
+                                    }
+                                }
+                            }
+
+                        </ul>
+                    </div>
+
+
+                    @{
+                        foreach (var item in Model.InstitutionAttributeList.OrderBy(x => x.PlacementOrder))
+                        {
+                            if (i == 0)
+                            {
+                                <div class="data-tab-content active" data-tab-id="1">
+
+
+                                    <p>
+                                        @Html.Raw(item.DetailDescription)
+                                    </p>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <div class="data-tab-content" data-tab-id="2">
+                                    <p>
+                                        @Html.Raw(item.DetailDescription)
+                                    </p>
+                                </div>
+
+                            }
+                        }}
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- feature style 1 -->

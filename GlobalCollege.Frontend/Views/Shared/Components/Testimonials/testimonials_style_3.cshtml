@@ -1,0 +1,47 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TestimonialsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="institution3">
+    <section class="school-page-section school-page-bg school-page-section-colored school-page-testimonial"
+             style="background-image: url(/img/bg-2.jpg);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 text-center section-heading school-page-animate">
+                    <h2>Student Testimonial</h2>
+
+                    <p class="lead">
+                        @Html.Raw(Model.Description)
+                    </p>
+                </div>
+            </div>
+            <!-- END row -->
+            <div class="row">
+                <div class="col-md-12 school-page-animate">
+                    <div class="owl-carousel" id="ins-testi">
+                        @foreach (var item in Model.TestimonialsList)
+                        {
+                            <div class="item pb-4">
+                                <div class="school-page-testimony-wrap text-center">
+                                    <figure>
+                                        <img src="@item.ThumbnailImageLink" alt="school">
+                                    </figure>
+                                    <blockquote class="quote">
+                                        @item.ShortStory <cite class="author"> &mdash; <span>@item.Name</span></cite>
+                                    </blockquote>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <!-- END row -->
+        </div>
+    </section>
+</div>
+
+

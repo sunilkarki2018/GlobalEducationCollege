@@ -1,0 +1,104 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FooterViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="modal fade" id="applyForm" tabindex="-1" role="dialog" aria-labelledby="applyForm"
+     aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="row no-gutters">
+                    <div class="col-md-4 submit-cv-left d-flex align-items-center justity-content-center">
+                        <div class="left-side d-flex align-items-center justify-content-center">
+                            <div>
+                                <img src="/img/rocket.png" alt="" class="vert-move">
+                                <h3 class="text-white">Submit Application</h3>
+
+                                <p>You are 30 seconds away from Submitting your Application</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <form>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="first">First Name</label>
+                                        <input type="text" class="form-control" placeholder="First Name"
+                                               id="first">
+                                    </div>
+                                </div>
+                                <!-- col-md-6 -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="last">Last Name</label>
+                                        <input type="text" class="form-control" placeholder="Last Name"
+                                               id="last">
+                                    </div>
+                                </div>
+                                <!-- col-md-6 -->
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="company">College Name</label>
+                                        <input type="text" class="form-control" placeholder="College Name"
+                                               id="company">
+                                    </div>
+                                </div>
+                                <!-- col-md-6 -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="phone">Phone Number</label>
+                                        <input type="tel" class="form-control" id="phone"
+                                               placeholder="Phone">
+                                    </div>
+                                </div>
+                                <!-- col-md-6 -->
+                            </div>
+                            <!-- row -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="email">Email address</label>
+                                        <input type="email" class="form-control" id="email"
+                                               placeholder="Email">
+                                    </div>
+                                </div>
+                                <!-- col-md-6 -->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="url">Your Website</label>
+                                        <input type="url" class="form-control" id="url" placeholder="Website">
+                                    </div>
+                                </div>
+                                <!-- col-md-6 -->
+                            </div>
+                            <!-- row -->
+                            <label for="contact-preference">When is the best time of day to reach you?</label>
+                            <div class="radio mb-5 pb-5">
+                                <label>
+                                    <input type="radio" name="contact-preference" id="contact-preference"
+                                           value="am" checked>&nbsp;&nbsp;Morning
+                                </label>&nbsp;&nbsp;&nbsp;&nbsp;
+                                <label>
+                                    <input type="radio" name="contact-preference" id="contact-preference2"
+                                           value="pm" checked>&nbsp;&nbsp;Evening
+                                </label>
+                            </div>
+                            <button type="submit" class="btn btn-primary">
+                                Submit Application &nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+
+                            </button>
+                        </form>
+                    </div>
+                    <i class="fa fa-times" data-dismiss="modal"></i>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

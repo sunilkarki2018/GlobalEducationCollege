@@ -1,0 +1,87 @@
+﻿@using GlobalCollege.Entity.Validation
+@using System.Data.Entity.Validation;
+@using GlobalCollege.Infrastructure
+@model System.Web.Mvc.HandleErrorInfo
+
+@{
+    ViewBag.Title = "Error";
+    Layout = Request.IsAjaxRequest() ? "" : "~/Views/Shared/_Layout.cshtml";
+}
+
+@if (Model.Exception is DbEntityValidationException)
+{
+    List<GlobalCollegeValidationResult> validationErrors = new List<GlobalCollegeValidationResult>();
+
+    foreach (var eve in ((DbEntityValidationException)Model.Exception).EntityValidationErrors)
+    {
+
+        var ModuleSetupInformation = ModuleHelper.GetModuleSetupByName(eve.Entry.Entity.GetType().Name);
+
+        var property = eve.ValidationErrors.FirstOrDefault();
+
+        if (property != null)
+        {
+            GlobalCollegeValidationResult validationResult = new GlobalCollegeValidationResult()
+            {
+                ColumnName = property.PropertyName,
+                Name = ModuleSetupInformation.ModuleBussinesLogicSetups.Where(x => x.ColumnName == property.PropertyName).Select(s => s.Name).FirstOrDefault(),
+                ValidationResultDetails = eve.ValidationErrors.Select(s => new ValidationResultDetails(ModuleSetupInformation.ModuleBussinesLogicSetups.Where(x => x.ColumnName == property.PropertyName).Select(Z => Z.Name).FirstOrDefault(), s.ErrorMessage)).ToList()
+            };
+
+
+            validationErrors.Add(validationResult);
+        }
+
+    }
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h1 class="box-title">Validation failed notification</h1>
+                </div>
+                <div class="box-body">
+
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th style="width: 10px">#</th>
+                                <th>Field Name</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var onlineValidationResult in validationErrors)
+                            {
+
+                                int _counter = 1;
+
+                                foreach (var validationResultDetails in onlineValidationResult.ValidationResultDetails)
+                                {
+                                    <tr>
+                                        <td style="width: 10px">@_counter</td>
+                                        <td>@validationResultDetails.Title</td>
+                                        <td>@validationResultDetails.ErrorMessage</td>
+                                    </tr>
+
+                                    _counter = _counter + 1;
+                                }
+
+                            }
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <h1 class="text-danger">Error.</h1>
+    <h2 class="text-danger">An error occurred while processing your request.</h2>
+}
+
+
+

@@ -1,0 +1,111 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TeamViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="faculty-members">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-7">
+                @foreach (var item in Model.TeamList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="row mb-5">
+                        <div class="col-lg-6">
+                            <img src="@item.ThumbnailImageLink" alt="member" class="w-100">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="profile-social">
+                                <a href="@item.FacebookLink"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="@item.LinkedinLink"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+                                <a href="#">
+                                    <i class="fa fa-skype" aria-hidden="true"></i>
+                                </a> <a href="@item.TwitterLink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                            </div>
+                            <div class="profile-info mb-5">
+                                <h2>@item.Name</h2>
+                                <span class="position">@item.Designation</span>
+
+                            </div>
+                            <div class="profile-contact">
+                                <p><i class="fa fa-envelope" aria-hidden="true"></i> @item.Email</p>
+                                <p><i class="fa fa-phone" aria-hidden="true"></i> @item.PhoneNumber</p>
+                                <p><i class="fa fa-map-marker" aria-hidden="true"></i> @item.Address</p>
+                            </div>
+                            <ul class="list-unstyled mt-3 mb-5">
+                                <li>- @item.Specialization</li>
+                                <li>- @item.GraduatedUniversity</li>
+                            </ul>
+                            <a href="/ContentManagement/TeamSetup/Details?Id=@item.Id" class="btn btn-primary faculity-btn">More Detail</a>
+
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="col-lg-4 col-md-5">
+                <div class="faculty-sidebar">
+                    <div class="faculty-menu">
+                        <h2>
+                            @Model.Faculty.Title
+                        </h2>
+                        <ul class="list-unstyled list-menu">
+                            @foreach (var item in Model.Faculty.FacultyAttributes.OrderBy(x => x.PlacementOrder))
+                            {
+                                <li>
+                                    <a href="@item.RedirectionLink">@item.Title</a>
+                                </li>
+                            }
+
+
+                        </ul>
+                    </div>
+
+                    @foreach (var item in Model.Faculty.FacultyContacts.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="department-contact">
+                            <h2>Department Contact Info</h2>
+
+                            <h3>@item.FieldString1</h3>
+
+                            <p>
+                                <i class="fa fa-map-marker"></i>
+                                <span>
+                                    @item.FieldString2
+                                </span>
+                            </p>
+                            <p class="mb-0">
+                                <i class="fa fa-phone"></i>  <span>@item.PhoneNumber</span>
+                            </p>
+                            <p>
+                                <i class="fa fa-envelope"></i>  <span>@item.Email</span>
+                            </p>
+                            <p class="hours">
+                                <i class="fa fa-clock"></i>  <span>@item.FieldString3</span>
+                            </p>
+
+
+                        </div> <a href="@item.FieldString4" class="btn btn-primary">Student Resources</a>
+
+
+                    }
+
+                    @foreach (var item in Model.Admissions.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="side-ad mt-5">
+                            <img src="@item.ThumbnailImageLink" class="w-100">
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+

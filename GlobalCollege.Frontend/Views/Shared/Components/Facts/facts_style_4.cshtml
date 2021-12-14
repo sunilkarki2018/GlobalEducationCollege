@@ -1,0 +1,43 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FactsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-lg-3">
+                <div class="counter-about text-center">
+                    <h2>@Model.Facts.StudentsEnrolled</h2>
+
+                    <p>Students Enrolled</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="counter-about text-center">
+                    <h2>@Model.Facts.CertifiedTeachers</h2>
+
+                    <p>Certified Teachers</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="counter-about text-center">
+                    <h2>@Model.Facts.CompleteCourses</h2>
+
+                    <p>Complete Courses</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-3">
+                <div class="counter-about text-center noborder">
+                    <h2>Total Program</h2>
+
+                    <p>Total Program</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+

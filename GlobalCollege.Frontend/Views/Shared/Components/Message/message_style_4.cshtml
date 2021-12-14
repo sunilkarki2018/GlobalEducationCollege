@@ -1,0 +1,33 @@
+﻿@model GlobalCollege.Entity.ViewComponent.MessageViewComponentModel
+@{
+    Layout = "";
+
+}
+
+
+
+@foreach (var message in Model.MessageSetupList.OrderBy(x => x.PlacementOrder))
+{
+    <div class="row">
+        <div class="col-lg-5 ml-auto">
+            <figure class="image__frame">
+                <img src="@message.ThumbnailImageLink" alt="">
+            </figure>
+        </div>
+        <div class="col-lg-5 mr-auto">
+            <div class="message-info_eye_2">
+                <h3>@message.Title</h3>
+                <span>@message.Quote</span>
+
+                <p>
+                    @Html.Raw(message.ShortDescription)
+                </p> <span class="name_plate_ey">@message.MessageBy</span>
+
+                <span class="degination_eye">@message.Designation</span>
+            </div>
+        </div>
+    </div>
+}
+
+
+

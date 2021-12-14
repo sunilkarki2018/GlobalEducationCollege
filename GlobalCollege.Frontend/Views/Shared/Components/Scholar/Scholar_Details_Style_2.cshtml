@@ -1,0 +1,39 @@
+﻿@model GlobalCollege.Entity.ViewComponent.ScholarViewComponentModel
+@{
+    ViewData["Title"] = "Scholar_Details_Style_2";
+}
+
+<div class="header_images _research-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="header_text-white">
+                    <h2>@Model.ScholarshipsSources.Title</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="how-to-apply">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>
+                    Model.ScholarshipsSources.Title
+                </h2>
+
+            </div>
+            <div class="col-md-12">
+
+                @Html.Raw(Model.ScholarshipsSources.DetailDescription)
+
+            </div>
+            <div class="col-md-12">
+                <a href="/ContentManagement/ProgramSetup/Index" class="btn btn-primary">View Our Programs</a>
+
+            </div>
+        </div>
+    </div>
+
+</section>

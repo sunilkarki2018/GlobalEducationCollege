@@ -1,0 +1,91 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TeamViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="research__wrapper">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="button-group filter-button-group alpha">
+                    <button data-filter="*" class="active">All</button>
+                    <button data-filter=".a">a</button>
+                    <button data-filter=".b">b</button>
+                    <button data-filter=" .c">c</button>
+                    <button data-filter=".d">d</button>
+                    <button data-filter=".e">e</button>
+                    <button data-filter=".f">f</button>
+                    <button data-filter=".g">g</button>
+                    <button data-filter=".h">h</button>
+                    <button data-filter=".i">i</button>
+                    <button data-filter=".j">j</button>
+                    <button data-filter=".k">k</button>
+                    <button data-filter=".l">l</button>
+                    <button data-filter=".m">m</button>
+                    <button data-filter=".n">n</button>
+                    <button data-filter=".o">o</button>
+                    <button data-filter=".p">p</button>
+                    <button data-filter=".q">q</button>
+                    <button data-filter=".r">r</button>
+                    <button data-filter=".s">s</button>
+                    <button data-filter=".t">t</button>
+                    <button data-filter=".u">u</button>
+                    <button data-filter=".v">v</button>
+                    <button data-filter=".w">w</button>
+                    <button data-filter=".x">x</button>
+                    <button data-filter=".y">y</button>
+                    <button data-filter=".z">z</button>
+                </div>
+            </div>
+        </div>
+        <div class="row researcher">
+            <div class="col-md-12">
+                <div class="grid">
+                    <!-- .grid-sizer empty element, only used for element sizing -->
+                    <div class="grid-sizer"></div>
+
+                    @for (char letter = 'A'; letter <= 'Z'; letter++)
+                    {
+                        @foreach (var item in Model.TeamList.Where(t => t.Name.StartsWith(letter)).OrderBy(x => x.PlacementOrder))
+                        {
+                            <div class="grid-item @letter.ToString().ToLower()">
+                                <div class="item-container">
+                                    <div class="author-face">
+                                        <img src="@item.ThumbnailImageLink" alt="research" class="w-100">
+                                    </div>
+                                    <div class="abcd_cards_3">
+                                        <a href="/ContentManagement/TeamSetup/Details?Id=@item.Id">
+                                            <h2>
+                                                @item.Name
+                                            </h2>
+                                        </a>
+                                        <span class="position">@item.TeachingSubject</span>
+
+                                        <p>
+                                            @Html.Raw(item.ShortDescription)
+                                        </p>
+                                        <div class="social-icons">
+                                            <a href="@item.FacebookLink"><i class="fa fa-facebook"></i> </a>
+                                            <a href="@item.TwitterLink"><i class="fa fa-twitter"></i> </a>
+
+                                            <a href="@item.LinkedinLink">
+                                                <i class="fa fa-linkedin"></i>
+                                            </a> <a href="@item.SkypeLink"><i class="fa fa-skype"></i> </a>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

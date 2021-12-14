@@ -1,0 +1,35 @@
+﻿@model GlobalCollege.Entity.ViewComponent.CourseViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="globalProgram sectionTop">
+    <div class="container">
+        <div class="global--section global__section--mb">
+            <p>Academic Course</p>
+            <h2 class="global__section--title">@Model.CourseDescription</h2>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.CourseList.OrderBy(x => x.PlacementOrder))
+            {
+                <div class="col* col-md-6 col-lg-4 program__list">
+                    <div class="program__card text-center">
+                        <h3>@item.Title</h3>
+                        <p>
+                            @Html.Raw(item.ShortDescription)
+                        </p>
+                        <div class="global__btn global--btn">
+                            <a href="/ContentManagement/CourseSetup/Details?Id=@item.Id" target="_blank">
+                                Apply Online <i class="fas fa-angle-right" aria-hidden="true"></i>
+                            </a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+

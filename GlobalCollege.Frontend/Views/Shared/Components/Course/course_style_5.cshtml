@@ -1,0 +1,45 @@
+﻿@model GlobalCollege.Entity.ViewComponent.CourseViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="school-page-section school-page-bg-white school-page-border-top">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 offset-lg-3 text-center section-heading ">
+                <h2>Our Courses</h2>
+                <p class="lead">
+                    @Html.Raw(Model.CourseDescription)
+                </p>
+            </div>
+        </div>
+        <!-- END row -->
+        <div class="row">
+            <div class="col-md-6">
+                @foreach (var item in Model.CourseList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="school-page-service-2 ">
+                        <div class="image">
+                            <div class="image-bg">
+                                <img src="@item.ThumbnailImageLink" alt="school">
+                            </div>
+                        </div>
+                        <div class="text">
+                            <span class="school-page-meta"><i class="icon-calendar2"></i>@item.Semester</span>
+                            <h3>@item.Title</h3>
+                            <p>
+                                @Html.Raw(item.ShortDescription)
+                            </p>
+                            <p>
+                                <a href="/ContentManagement/CourseSetup/Details?Id=@item.Id" class="btn btn-primary">Learn More</a>
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+

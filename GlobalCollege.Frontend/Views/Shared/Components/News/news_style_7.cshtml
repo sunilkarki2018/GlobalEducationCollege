@@ -1,0 +1,67 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="sports-news" class="pt-0">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <h2 class="sports-heading">News &amp; Updates</h2>
+
+                <div class="row">
+                    @foreach (var item in Model.BlogList)
+                    {
+                        <div class="col-md-6">
+                            <img src="@item.ThumbnailImageLink" class="w-100">
+                            <div class="news-detail">
+                                <div class="date">@item.BlogDate</div> <a href="/ContentManagement/AdmissionSetup/Details?Id=@item.Id"><h2>@item.Title</h2></a>
+
+                            </div>
+                        </div>
+                    }
+
+                    <div class="col-md-6">
+                        @foreach (var item in Model.AdmissionList.OrderBy(x => x.PlacementOrder))
+                        {
+                            <div class="box-news">
+                                <img src="@item.ThumbnailImageLink" alt="news">
+                                <div class="news-detail">
+                                    <div class="date">@item.StartDate </div> <a href="/ContentManagement/AdmissionSetup/Details?Id=@item.Id"><h2>@item.Title</h2></a>
+
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <h2 class="sports-heading">Upcoming Events</h2>
+                @foreach (var item in Model.EventList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="event-sideBox">
+                        <div class="date">
+                            <h2>@item.EventDate.Day</h2>
+                            <span>@item.EventDate.ToString("MMM")</span>
+
+                        </div>
+                        <div class="info">
+                            <a href="/ContentManagement/EventSetup/Details?Id=@item.Id"><h2>@item.Title</h2></a>
+                            <span><i class="fa fa-clock" aria-hidden="true"></i>@item.Time <i class="fa fa-map-marker" aria-hidden="true"></i>@item.Venue</span>
+
+                        </div>
+                    </div>
+                }
+
+
+                <a href="/ContentManagement/EventSetup/Index" class="view-all">View All Events</a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

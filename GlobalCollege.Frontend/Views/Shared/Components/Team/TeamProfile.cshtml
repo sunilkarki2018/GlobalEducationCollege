@@ -1,0 +1,47 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TeamViewComponentModel
+@{
+    Layout = "";
+
+}
+
+
+<section id="researcherProfile">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-4">
+                <img src="@Model.Profile.ThumbnailImageLink" class="w-100">
+                <div class="profile-social">
+                    <a href="@Model.Profile.FacebookLink"><i class="fa fa-facebook"></i></a>
+                    <a href="@Model.Profile.LinkedinLink"><i class="fa fa-linkedin"></i></a>
+                    <a href="@Model.Profile.SkypeLink"><i class="fa fa-skype"></i></a>
+                    <a href="@Model.Profile.TwitterLink"><i class="fa fa-twitter"></i></a>
+
+                </div>
+                <div class="profile-contact">
+                    <p><i class="fa fa-envelope"></i> @Model.Profile.PersonalEmailAddress</p>
+                    <p><i class="fa fa-phone"></i> @Model.Profile.PhoneNumber</p>
+                    <a href="@Model.Profile.CVDownloadLink" class="btn btn-primary">Download CV</a>
+
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-8 profile-info">
+                <h2>@Model.Profile.Name</h2>
+                <span class="position">@Model.Profile.Designation</span>
+
+                <p class="short-info">
+                    @Html.Raw(Model.Profile.ShortDescription)
+                </p>
+                <div class="profile-details">
+                    @foreach (var attribute in Model.Profile.TeamAttributeSetups.OrderBy(o => o.PlacementOrder))
+                    {
+                        <div class="detail">
+                            <h3>@attribute.Title</h3>
+                            @Html.Raw(attribute.DetailDescription)
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

@@ -1,0 +1,34 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="alumni">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 d-flex justify-content-between">
+                <h2 class="heading">
+                    Alumni Updates
+                </h2><a href="/ContentManagement/EventSetup/Index" class="view-all">View All Events</a>
+
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.EventList.OrderBy(x => x.PlacementOrder))
+            {
+                <div class="col-md-4">
+                    <img src="@item.ThumbnailImageLink">
+                    <div class="news-detail">
+                        <div class="date">@item.EventDate</div>
+                        <a href="/ContentManagement/EventSetup/Details?Id=@item.Id"><h2>@Html.Raw(item.ShortDescription)</h2></a>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+
+

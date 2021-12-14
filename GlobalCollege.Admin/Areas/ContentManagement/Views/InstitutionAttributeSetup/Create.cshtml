@@ -1,0 +1,106 @@
+@model GlobalCollege.Entity.DTO.ModuleSummary
+@using GlobalCollege.Admin.Utility
+@{
+    Layout = this.Request.IsAjaxRequest() ? "" : "~/Views/Shared/_Layout.cshtml";
+}
+@{
+    int size = Model.IsParent ? 10 : 12;
+}
+<div class="row">  
+
+        @Html.Hidden("ParentId", null)
+            
+
+    <div class="col-md-12" id="currentTabInformation">
+        @using (Html.BeginForm("Create", Model.ModuleSummaryName, new { area = Model.SchemaName }, FormMethod.Post, new { @role = "form", @id = "mainForm", @autocomplete = "off", @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.Hidden("Id", Model.PrimaryRecordId)
+            @Html.Hidden("CurrentAction", GlobalCollege.Entity.CurrentAction.Create)
+            foreach (var item in Model.moduleBussinesLogicSummaries.Where(x => x.HtmlDataType == "hidden"))
+            {
+                @Html.Hidden(item.ColumnName, item.CurrentValue)
+            }
+
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">@Model.ModuleSummaryTitle</h3>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        @foreach (var item in Model.moduleBussinesLogicSummaries.Where(x => x.HtmlDataType != "hidden").OrderBy(c => c.Position))
+                        {
+                            if (item.HtmlDataType == "input")
+                            {
+                                <div class="form-group has-feedback col-lg-4">
+                                    <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name </label>
+                                    @Html.TextBox(item.ColumnName, item.CurrentValue ?? item.DefaultValue, item.Attributes)
+                                    <span class="field-validation-valid help-block" data-valmsg-for="@item.ColumnName" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                            if (item.HtmlDataType == "password")
+                            {
+                                <div class="form-group has-feedback col-lg-4">
+                                    <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name </label>
+                                    @Html.Password(item.ColumnName, item.CurrentValue ?? item.DefaultValue, item.Attributes)
+                                    <span class="field-validation-valid help-block" data-valmsg-for="@item.ColumnName" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                            if (item.HtmlDataType == "datalist")
+                            {
+                                <div class="form-group has-feedback col-lg-3">
+                                    <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name </label>
+                                    @Html.DataList(item.ColumnName, null, item.CurrentValue, item.SelectList.Select(s => new SelectListItem() { Text = s.Text, Value = s.Value, Selected = s.Selected }), item.Attributes)
+                                    <span class="field-validation-valid help-block" data-valmsg-for="@item.ColumnName" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                            if (item.HtmlDataType == "textarea")
+                            {
+                                <div class="form-group has-feedback col-lg-12">
+                                    <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name </label>
+                                    @Html.TextArea(item.ColumnName, item.CurrentValue as string ?? item.DefaultValue as string, 5, 20, item.Attributes)
+                                    <span class="field-validation-valid help-block" data-valmsg-for="@item.ColumnName" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                            if (item.HtmlDataType == "select")
+                            {
+                                 <div class="form-group has-feedback col-lg-4">
+                                    <label class="control-label" for="inputSuccess"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name </label>
+                                    @Html.DropDownList(item.ColumnName, item.SelectList.Select(s => new SelectListItem() { Text = s.Text, Value = s.Value, Selected = s.Selected }), "--Select--", item.Attributes)
+                                    <span class="field-validation-valid help-block" data-valmsg-for="@item.ColumnName" data-valmsg-replace="true"></span>
+                                 </div>
+                            }
+                        }
+
+                        
+                    </div>
+                    <div class="row">
+                        <p style="float:right">
+                            @if (GlobalCollege.Admin.Utility.AuthorizeViewHelper.IsAuthorize(Model.SchemaName, Model.ModuleSummaryName, GlobalCollege.Entity.CurrentAction.Create))
+                            {
+                                <button class="btn icon-btn btn-success saveRecords" type="submit" disabled>
+                                    <span class="btn-glyphicon glyphicon glyphicon-floppy-disk img-circle text-success">
+                                    </span>Save Record
+                                </button>
+                            }
+
+                            @if (Model.IsParent)
+                            {
+                                <a href="/ContentManagement/InstitutionAttributeSetup" class="btn btn-primary btn-flat">
+                                    <i class="fa  fa-hand-o-left"></i> Back to Summary
+                                </a>
+                            }
+                            else
+                            {
+                                <a href="/ContentManagement/InstitutionAttributeSetup" class="btn btn-primary btn-flat" id="backtoSummary">
+                                    <i class="fa  fa-hand-o-left"></i> Back to Summary
+                                </a>
+                            }
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>

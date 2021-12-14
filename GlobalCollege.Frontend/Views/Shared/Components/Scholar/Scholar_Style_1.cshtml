@@ -1,0 +1,107 @@
+﻿@model GlobalCollege.Entity.ViewComponent.ScholarViewComponentModel
+@{
+    Layout = "";
+}
+
+<div class="header_images lifeatgci--background pb-5" style="background-image: url(/img/research.jpg)">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="header_text-white">
+                    <h2>@Model.Scholar.Title</h2>
+
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <p>
+                    @Html.Raw(Model.Scholar.ShortDescription)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="shholar-columns" class="pb-5 mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="scholar-head">Scholarships Sources</h2>
+
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.Scholar.ScholarshipsSourcess.OrderBy(o => o.PlacementOrder))
+            {
+                <div class="col-md-4">
+                    <div class="schloar-block">
+                        <h2 class="col-title">@item.Title</h2>
+
+                        <p>
+                            @Html.Raw(item.ShortDescription)
+                        </p> <a href="/ContentManagement/ScholarshipsSources/Details?Id=@item.Id">Read More <i class="fa fa-arrow-right"></i> </a>
+
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</section>
+<section class="scholar-requirement">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Scholar.ScholarshipsAttributeSetups.Where(r => r.ScholarAttributeType == "Requirement").OrderBy(o => o.PlacementOrder))
+            {
+                <div class="col-md-6">
+                    <h2>@item.Title</h2>
+
+                    @Html.Raw(item.DetailDescription)
+                </div>
+            }
+        </div>
+    </div>
+</section>
+<section id="contact-faq">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Scholar.ScholarshipsAttributeSetups.Where(x => x.ScholarAttributeType == "Contact").OrderBy(o => o.PlacementOrder))
+            {
+                <div class="col-md-6">
+                    <h2>@item.Title</h2>
+
+                    @Html.Raw(item.DetailDescription)
+                </div>
+            }
+            <div class="col-md-6">
+                <h2>Frequently Asked Questions</h2>
+
+                <div class="accordion pt-2" id="collapse-course">
+                    @{
+                        int i = 0;
+                        foreach (var faq in Model.Scholar.ScholarFAQSetups.OrderBy(x => x.PlacementOrder))
+                        {
+                            <div class="card">
+                                <div class="card-header" id="hd-1">
+                                    <h2 class="mb-0">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                data-target="#colp-@i" aria-expanded="true" aria-controls="collapseOne">
+                                            @faq.Title
+                                        </button>
+                                    </h2>
+
+                                </div>
+                                <div id="colp-@i" class="collapse show" aria-labelledby="dt-1" data-parent="#collapse-course">
+                                    <div class="card-body">
+                                        @Html.Raw(faq.DetailDescription)
+                                    </div>
+                                </div>
+                            </div>
+
+                            i = i + 1;
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

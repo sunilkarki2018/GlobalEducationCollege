@@ -1,0 +1,38 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FactsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="homeCount">
+    <div class="homeCount__bg" style="background:url(../img/university__student.jpg);background-size: cover;background-repeat: no-repeat;background-attachment: fixed;background-position: center;">
+        <div class="container">
+            <div class="homeCount___infos">
+                <div class="row">
+                    <div class="col* col-md-3 col-lg-3 homeCount__list">
+                        <h4>@Model.Facts.StudentsEnrolled</h4>
+
+                        <p>Students Enrolled</p>
+                    </div>
+                    <div class="col* col-md-3 col-lg-3 homeCount__list">
+                        <h4>@Model.Facts.CertifiedTeachers</h4>
+
+                        <p>Certified Teachers</p>
+                    </div>
+                    <div class="col* col-md-3 col-lg-3 homeCount__list">
+                        <h4>@Model.Facts.CompleteCourses</h4>
+
+                        <p>Complete Courses</p>
+                    </div>
+                    <div class="col* col-md-3 col-lg-3 homeCount__list">
+                        <h4>@Model.Facts.TotalProgram</h4>
+
+                        <p>TotalProgram</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

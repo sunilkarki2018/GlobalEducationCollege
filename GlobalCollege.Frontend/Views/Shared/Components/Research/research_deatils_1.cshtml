@@ -1,0 +1,88 @@
+﻿@model GlobalCollege.Entity.ViewComponent.ResearchViewComponentModel
+@{
+    Layout = "";
+}
+
+<div class="header_images _research-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="header_text-white">
+                    <h2>Researches Details</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="research-details">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-8">
+                <img src="img/computer.jpg" class="w-100" alt="research-details">
+                <div class="research-info">
+                    <i class="fa fa-clock" aria-hidden="true"></i>@Model.Research.CreatedDate.ToLongDateString() &nbsp;&nbsp;| &nbsp;&nbsp;
+                    <a href="#">@Model.Research.Title</a>
+                </div>
+                <p class="research-description">
+                    @Html.Raw(Model.Research.DetailDescription)
+                </p>
+            </div>
+            <div class="col-lg-3 col-md-4">
+                <div class="research-sidebar">
+                    <h3>Authors</h3>
+
+                    <div class="author">
+                        <a class="author-info" href="/ContentManagement/TeamSetup/Details?Id=@Model.Research.TeamSetupId">
+                            <span class="author-img">
+                                <img src="@Model.Research.AuthorThumbnailImageLink" alt="author">
+                            </span>
+                            <p>
+                                @Model.Research.Author
+                                <span>@Model.Research.Designation</span>
+                            </p>
+                        </a>
+
+                    </div>
+                    <h3 class="mt-5 mb-0">Client</h3>
+                    <strong class="client">Global College</strong>
+
+                    <h3 class="mt-5 mb-0">Work</h3>
+                    <strong class="client">@Model.Research.ResearchCategory.Title</strong>
+
+                    <h3 class="mt-5 mb-0">Duration</h3>
+                    <strong class="client">@Model.Research.Duration</strong>
+
+                    <h3 class="mt-5 mb-0">Website</h3>
+                    <strong class="client">@Model.Research.Website</strong>
+                    <a href="@Model.Research.DonwnloadLink" class="btn btn-primary  btn-xl d-block">Download PDF</a>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="related-projects">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h2>Related Research</h2>
+                <div class="owl-carousel related-research">
+                    @foreach (var research in Model.RealtedResearchList.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="research-item">
+                            <div class="item-container">
+                                <div class="text-container">
+                                    <a href="/ContentManagement/ResearchSetup/Details?Id=@research.Id"> <h2>@research.Title</h2></a>
+                                    <small>@research.ResearchCategory.Title</small>
+                                </div>
+                                <img src="@research.ThumbnailImageLink" alt="research" class="w-100">
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

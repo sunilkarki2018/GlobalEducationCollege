@@ -1,0 +1,26 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="col-lg-4">
+    <div class="card blog-widget mt-5">
+        <h2 class="widget-title">
+            Our Programs
+        </h2>
+
+        <ul class="list-group list-group-flush">
+
+
+            @foreach (var item in Model.ProgramList.OrderBy(o => o.PlacementOrder))
+            {
+                <li class="list-group-item"><a href="/ContentManagement/ProgramSetup/Details?Id=@item.Id"> @item.Title</a> </li>
+            }
+
+
+        </ul>
+    </div>
+</div>
+
+

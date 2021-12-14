@@ -1,0 +1,12 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+}
+
+<div class="row">
+    <div class="event-content">
+        <img src="@Model.Admission.BannerImageLink" class="w-100 mb-4" alt="event-image">
+        @Html.Raw(Model.Admission.DetailDescription)
+    </div>
+</div>
+

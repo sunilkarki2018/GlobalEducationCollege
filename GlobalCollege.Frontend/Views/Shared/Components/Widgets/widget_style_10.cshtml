@@ -1,0 +1,41 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="academic-skill">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="title">ACADEMIC SKILL</h2>
+
+            </div>
+            <div class="col-md-6">
+                <img src="/img/studtn_1.png" alt="students">
+            </div>
+            <div class="col-md-6">
+
+                @foreach (var item in Model.AcademicSkillList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="skills">
+                        <div class="skill">
+                            <strong>@item.Title</strong>
+                            <strong>@Html.Raw(item.ShortDescription)</strong>
+
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-success" role="progressbar" style="width: @item.ShortDescription%" aria-valuenow="@item.ShortDescription"
+                                 aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

@@ -1,0 +1,100 @@
+﻿@model GlobalCollege.Entity.ViewComponent.EventsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="institution3">
+    <section class="school-page-section school-page-section-colored school-page-bg school-page-custom-heading school-page-tab-section"
+             style="background-image: url(/img/globe-news.jpg)">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center section-heading ">
+                    <h2 class="mb0">Highlights</h2>
+
+                </div>
+            </div>
+        </div>
+        <div class="school-page-tab-style-1">
+            <ul class="nav nav-tabs school-page-center school-page-tabs no-border">
+
+                <li>
+                    <a data-toggle="tab" href="#featured-news" class="active">Featured News</a>
+                </li>
+                <li>
+                    <a data-toggle="tab" href="#upcoming-events">Upcoming Events</a>
+                </li>
+            </ul>
+        </div>
+    </section>
+    <section class="school-page-section school-page-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="tab-content">
+                        <div id="featured-news" class="tab-pane fade in show active">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="owl-carousel" id="ins-news">
+                                        @foreach (var item in Model.NewsList.OrderBy(x => x.PlacementOrder))
+                                        {
+                                            <div class="item">
+                                                <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id" class="school-page-featured-news-box">
+                                                    <figure class="school-page-media"><img src="@item.ThumbnailImageLink" alt="school" class="img-responsive"></figure>
+                                                    <div class="school-page-text">
+                                                        <h3>@item.Title</h3>
+                                                        <p>@Html.Raw(item.ShortDescription)</p>
+                                                        <span class="school-page-date"><i class="icon-calendar"></i>@item.NewsDate</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END row -->
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <p>
+                                        <a href="/ContentManagement/NewsSetup/Index" class="btn btn-primary">View all news</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="upcoming-events" class="tab-pane fade">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="owl-carousel" id="ins-event">
+                                        @foreach (var item in Model.EventList)
+                                        {
+                                            <div class="item">
+                                                <a href="/ContentManagement/EventSetup/Details?Id=@item.Id" class="school-page-featured-news-box">
+                                                    <figure class="school-page-media"><img src="@item.ThumbnailImageLink" alt="school" class="img-responsive"></figure>
+                                                    <div class="school-page-text">
+                                                        <h3>@item.Title</h3>
+                                                        <span class="school-page-date"><i class="icon-calendar"></i>@item.EventDate</span>
+                                                        <span class="school-page-location"><i class="icon-location2"></i>@item.Venue</span>
+                                                    </div>
+                                                </a>
+
+                                            </div>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <p>
+                                        <a href="/ContentManagement/EventSetup/Index" class="btn btn-primary">View all events</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

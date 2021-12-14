@@ -1,0 +1,30 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FooterViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="popup-admission unseen">
+    <div class="popup-header">
+        <i class="fa fa-angle-up"></i>
+        <i class="fa fa-times"></i>
+
+        <h2>Registation Open</h2>
+
+    </div>
+
+    @foreach (var item in Model.AdmissionList.OrderBy(x => x.PlacementOrder))
+    {
+        <div class="popup-content">
+            <div class="content">
+                <h3>@item.Title</h3>
+
+                <p>@item.StartDate.ToShortDateString()</p>
+            </div>
+            <div class="action-popup">
+                <a class="btn btn-primary" href="http://admin.globalcollege.edu.np/OnlineRegistration">Apply Now</a>
+            </div>
+        </div>
+    }
+</div>
+

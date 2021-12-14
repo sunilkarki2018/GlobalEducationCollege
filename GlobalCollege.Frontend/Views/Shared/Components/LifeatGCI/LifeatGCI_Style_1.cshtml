@@ -1,0 +1,121 @@
+﻿@model GlobalCollege.Entity.ViewComponent.LifeatGCIViewComponentModel
+@{
+    Layout = "";
+}
+
+<div class="header_images lifeatgci--background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-5">
+                <div class="header_text-white">
+                    <h2>Student Life at CG</h2>
+
+                </div>
+            </div>
+            <div class="col-lg-8 col-md-7">
+                <p>
+                    @Html.Raw(Model.LifeAtInstitution.ShortDescription)
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="studentLife">
+    <div class="container">
+        <div class="row">
+            @{
+                int i = 1;
+                string _class = "left-content";
+                foreach (var item in Model.LifeAtInstitution.LifeAtInstitutionAttributeSetups.Where(x => x.LifeAtInstitutionAttributeType == "Top").OrderBy(x => x.PlacementOrder).ToList())
+                {
+                    if (i % 2 == 0)
+                    {
+                        _class = "left-content";
+                    }
+                    else
+                    {
+                        _class = "right-content";
+                    }
+
+                    <div class="col-lg-6 col-md-6 pr-lg-5">
+                        <div class="@_class pr-lg-5">
+                            <h2>@item.Title</h2>
+
+                            <p class="large">
+                                @Html.Raw(item.ShortDescription)
+                            </p>
+
+                            @Html.Raw(item.DetailDescription)
+                            <hr>
+                        </div>
+                    </div>
+
+                    i = i + 1;
+                }
+            }
+        </div>
+    </div>
+</section>
+
+@foreach (var item in Model.LifeAtInstitution.LifeAtInstitutionAttributeSetups.Where(x => x.LifeAtInstitutionAttributeType == "Middle").OrderBy(x => x.PlacementOrder))
+{
+    <section class="large-bg" style="background-image: url(@item.ThumbnailImageLink);">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-5">
+                    <div class="header_text-white">
+                        <h2>@item.Title</h2>
+
+                    </div>
+                </div>
+                <div class="col-lg-8 col-md-7">
+                    @Html.Raw(item.DetailDescription)
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+<section id="sudent-courses">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.LifeAtInstitution.LifeAtInstitutionAttributeSetups.Where(x => x.LifeAtInstitutionAttributeType == "Bottom").OrderBy(x => x.PlacementOrder))
+            {
+                <div class="col-lg-4 col-md-4 mb-5">
+                    <img src="@item.ThumbnailImageLink" class="w-100" alt="food">
+                    <h2>@item.Title</h2>
+
+                    <p>
+                        @Html.Raw(item.ShortDescription)
+                    </p>
+                    <a href="/Details/Index?RecordType=ContentManagement.LifeAtInstitutionAttributeSetup&Id=@item.Id">Read More <i class="fa fa-arrow-right" aria-hidden="true"></i> </a>
+
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+@foreach (var item in Model.LifeAtInstitution.LifeAtInstitutionAttributeSetups.Where(x => x.LifeAtInstitutionAttributeType == "Message").OrderBy(x => x.PlacementOrder))
+{
+    <section id="shortLife">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-lg-6 col-md-6">
+                    <img src="@item.ThumbnailImageLink" alt="studnet" class="w-100">
+                </div>
+                <div class="col-lg-6 col-md-6 pl-5 pr-5 d-flex align-items-center">
+                    <div class="testimonial">
+                        <h2>
+                            @item.Title
+                        </h2>
+
+                        <p>@Html.Raw(item.ShortDescription)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

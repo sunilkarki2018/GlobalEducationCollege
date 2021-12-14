@@ -1,0 +1,27 @@
+﻿@model GlobalCollege.Entity.ViewComponent.MessageViewComponentModel
+@{
+    Layout = "";
+
+}
+
+
+<div class="col-lg-2 ml-auto col-md-3">
+    <div class="valley_viewFigure">
+        <figure>
+            <img src="@Model.Message.ThumbnailImageLink" alt="">
+        </figure>
+    </div>
+</div>
+<div class="col-lg-5 mr-auto col-md-9">
+    <div class="valleyView_info_wrapper">
+        <h3>@Model.Message.Title</h3>
+
+        <p>
+            @Html.Raw(Model.Message.ShortDescription)
+        </p>
+    </div>
+</div>
+
+
+
+

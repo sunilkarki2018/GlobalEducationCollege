@@ -1,0 +1,39 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+
+<div class="card blog-widget">
+    <h2 class="widget-title">
+        Upcoming Events
+    </h2>
+
+    @foreach (var item in Model.EventList.OrderBy(x => x.PlacementOrder))
+    {
+        <div class="event-sideBox">
+            <div class="date">
+                <h2>@item.EventDate.Day</h2>
+                <span>@item.EventDate.ToString("MMM")</span>
+
+            </div>
+            <div class="info">
+                <a href="/ContentManagement/EventSetup/Details?Id=@item.Id">
+                    <h2>
+                        @item.Title
+                    </h2>
+                </a>
+                <span>
+                    <i class="fa fa-clock" aria-hidden="true"></i>@item.Time <i class="fa fa-map-marker"
+                                                                                aria-hidden="true"></i>@item.Venue
+                                                                            </span>
+
+                                                                        </div>
+                                                                    </div>
+                                                                }
+
+</div>
+
+
+

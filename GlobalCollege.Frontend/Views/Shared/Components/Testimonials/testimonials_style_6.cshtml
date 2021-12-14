@@ -1,0 +1,46 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TestimonialsViewComponentModel
+@{
+    Layout = "";
+}
+
+<div class="college-page">
+    <div class="site-section">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-4">
+                    <h2 class="section-title-underline">
+                        <span>Testimonials</span>
+                    </h2>
+
+                </div>
+            </div>
+            <div class="college-testi owl-slide owl-carousel">
+
+
+                @foreach (var item in Model.TestimonialsList)
+                {
+                    <div class="clg-profile-testimonial-1">
+                        <div class="clg-profile-testimonial-vcard d-flex align-items-center mb-4">
+                            <img src="@item.ThumbnailImageLink" alt="Image" class="img-fluid mr-3">
+                            <div>
+                                <h3>@item.Name</h3>
+                                <span>@item.Designation</span>
+
+                            </div>
+                        </div>
+                        <div>
+                            <p>
+                                @item.ShortStory
+                            </p>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

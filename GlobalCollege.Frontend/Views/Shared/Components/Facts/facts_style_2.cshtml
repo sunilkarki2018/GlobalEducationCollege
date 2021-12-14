@@ -1,0 +1,73 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FactsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="institution3">
+    <section class="school-page-section pt-0" id="school-page-counter">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 ">
+                    <div class="school-page-counter-wrap">
+                        <div class="school-page-icon">
+                            <i class="icon-users2"></i>
+
+                        </div>
+                        <div class="school-page-text">
+                            <span class="school-page-counter">
+                                <span class="js-counter" data-from="0" data-to="20203" data-speed="5000" data-refresh-interval="50">@Model.Facts.StudentsEnrolled</span>
+                            </span>
+                            <span class="school-page-counter-label">Students Enrolled</span>
+                        </div>
+                    </div>
+                </div>foreach
+                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 ">
+                    <div class="school-page-counter-wrap">
+                        <div class="school-page-icon">
+                            <i class="icon-user-tie"></i>
+
+                        </div>
+                        <div class="school-page-text">
+                            <span class="school-page-counter">
+                                <span class="js-counter" data-from="0" data-to="139" data-speed="5000" data-refresh-interval="50">@Model.Facts.CertifiedTeachers</span>
+                            </span>
+                            <span class="school-page-counter-label">Certified Teachers</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12 ">
+                    <div class="school-page-counter-wrap">
+                        <div class="school-page-icon">
+                            <i class="icon-library"></i>
+
+                        </div>
+                        <div class="school-page-text">
+                            <span class="school-page-counter">
+                                <span class="js-counter" data-from="0" data-to="99" data-speed="5000" data-refresh-interval="50">@Model.Facts.PassingtoUniversities</span>%
+                            </span>
+                            <span class="school-page-counter-label">Passing to Universities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 col-sm-6 col-xs-6 col-xxs-12">
+                    <div class="school-page-counter-wrap">
+                        <div class="school-page-icon">
+                            <i class="icon-smile2"></i>
+
+                        </div>
+                        <div class="school-page-text">
+                            <span class="school-page-counter">
+                                <span class="js-counter" data-from="0" data-to="100" data-speed="5000" data-refresh-interval="50">@Model.Facts.ParentsSatisfaction</span>%
+                            </span>
+                            <span class="school-page-counter-label">Parents Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+

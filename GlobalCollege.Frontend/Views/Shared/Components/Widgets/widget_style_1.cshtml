@@ -1,0 +1,28 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+@foreach (var item in Model.FacultyList.OrderBy(x => x.PlacementOrder))
+{
+    <div id="donate-wrap">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="department-contact">
+                        <h2>@item.Title</h2>
+
+                        <h3>@item.ShortDescription</h3>
+
+                        @Html.Raw(item.DetailDescription)
+
+                        <a href="ContentManagement/FacilitySetup/Index" class="btn btn-primary">Student Resources</a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+

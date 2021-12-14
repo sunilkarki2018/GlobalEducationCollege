@@ -1,0 +1,93 @@
+﻿@model GlobalCollege.Entity.ViewComponent.CourseViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="valleyView_bigbackground">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Our Courses</h3>
+
+            </div>
+        </div>
+    </div>
+</section>
+<section id="program__tabEye">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="vallery_viewTabEye">
+                    <ul class="nav nav-tabs">
+                        @{
+                            int i = 0;
+                            foreach (var item in Model.CourseList.OrderBy(x => x.PlacementOrder))
+                            {
+                                if (i == 0)
+                                {
+                                    <li>
+                                        <a data-toggle="tab" href="#@i" class="active">@item.Title <i class="fas fa-angle-down" aria-hidden="true"></i></a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li>
+                                        <a data-toggle="tab" href="#@i">@item.Title <i class="fas fa-angle-down" aria-hidden="true"></i></a>
+                                    </li>
+                                }
+
+                                i = i + 1;
+                            }
+                        }
+
+                    </ul>
+                    <div class="tab-content">
+                        @{
+
+                            i = 0;
+                            foreach (var item in Model.CourseList.OrderBy(x => x.PlacementOrder))
+                            {
+                                if (i == 0)
+                                {
+                                    <div id="home" class="tab-pane fade in active show">
+                                        <div class="valley_viewTabWrapper">
+                                            <div class="tabInImages">
+                                                <img src="@item.ThumbnailImageLink" alt="">
+                                            </div>
+                                            <div class="valley_view_content_eye11">
+                                                <p>
+                                                    @Html.Raw(item.ShortDescription)
+                                                </p> <a href="/ContentManagement/CourseSetup/Details?Id=@item.Id" class="btn-common">Read More</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div id="menu1" class="tab-pane fade">
+                                        <div class="valley_viewTabWrapper">
+                                            <div class="tabInImages">
+                                                <img src="@item.ThumbnailImageLink" alt="">
+                                            </div>
+                                            <div class="valley_view_content_eye11">
+                                                <p>
+                                                    @Html.Raw(item.ShortDescription)
+                                                </p> <a href="/ContentManagement/CourseSetup/Details?Id=@item.Id" class="btn-common">Read More</a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                }
+
+                                i = i + 1;
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

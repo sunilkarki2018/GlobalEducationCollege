@@ -1,0 +1,39 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+
+}
+<section class="globalnews globNews sectionTop">
+    <div class="container">
+        <div class="global--section">
+            <p>latest news & events</p>
+            <h2 class="global__section--title">We Provide All Necessary Information </h2>
+
+        </div>
+        <div class="globNews__card">
+            <div id="globalNews__carousel" class="owl-carousel owl-theme globNews__slide">
+                @foreach (var item in Model.NewsList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="item">
+                        <figure>
+                            <img src="@item.ThumbnailImageLink" alt="title">
+                        </figure>
+                        <div class="globNews__card global--card">
+                            <h4>@item.Title</h4>
+
+                            <p>
+                                @Html.Raw(item.ShortDescription)
+                            </p>
+                            <div class="globNews__btn global--btn1">
+                                <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id" target="_blank"><i class="fas fa-angle-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+

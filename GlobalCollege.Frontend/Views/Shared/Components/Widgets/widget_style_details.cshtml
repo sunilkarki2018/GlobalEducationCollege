@@ -1,0 +1,87 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="messagesFrom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="messageContainer" style="background-image: url(@Model.DetailModel.BannerImageLink);">
+                    <div class="message">
+                        <h2>@Model.DetailModel.ShortDescription</h2>
+
+                        @Html.Raw(Model.DetailModel.DetailDescription)
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <h2>OUR FIRST POINT OF CONTACT</h2>
+
+                    <h3>Detailed information, brochures and forms can be mailed to you upon request.</h3>
+
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipi sicing elit, sed do eiusmod
+                        tempor incididunt ut labore et.dolore magna aliquauis aute irure dolor.
+                        Ut enim ad minim veniam, quis nostrud.
+                    </p> <a href="message-info.html" class="btn btn-primary btn-lg">Lean more</a>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h2>LATEST EVENT</h2>
+
+                    @foreach (var latestevent in Model.EventList.OrderBy(o => o.PlacementOrder))
+                    {
+                        <div class="news">
+                            <div class="date">
+                                <h2>@latestevent.EventDate.Day</h2>
+                                <span>@latestevent.EventDate.ToString("MMM"), @latestevent.EventDate.Year</span>
+
+                            </div>
+                            <div class="content">
+                                <p>@latestevent.Time</p> <a href="/ContentManagement/EventSetup/Details?Id=@latestevent.Id"><strong>@latestevent.Title</strong></a>
+
+                            </div>
+                        </div>
+                    }
+
+                    <a href="/ContentManagement/EventSetup" class="view-all">View All Events</a>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h2>LATEST BLOGS</h2>
+
+                    <div class="owl-carousel stories">
+                        @foreach (var blog in Model.BlogList)
+                        {
+                            <div class="story">
+                                <div class="story-image">
+                                    <img src="@blog.ThumbnailImageLink" alt="story" class="w-100">
+                                </div>
+                                <div class="date-container">
+                                    <a href="/ContentManagement/BlogSetup/Details?Id=@blog.Id">@blog.BlogDate.ToLongDateString()</a>
+
+                                </div>
+                                <h2 class="title">@blog.Title</h2>
+                                <a href="/ContentManagement/BlogSetup/Details?Id=@blog.Id" class="link">Read More <i class="fa fa-angle-right"></i> </a>
+
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

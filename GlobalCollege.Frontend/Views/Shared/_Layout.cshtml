@@ -1,0 +1,221 @@
+﻿@model GlobalCollege.Entity.DTO.FrontendPageInformation
+@{
+    var layoutInformation = Model.frontendLayout;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" href="@layoutInformation.LogoLink" />
+    <title>@layoutInformation.LayoutName</title>
+</head>
+<body>
+
+    @try
+    {
+
+        int totalPlaceHolder = layoutInformation.LayoutComponents.Where(x => x.ComponentType == "header").Select(s => s.PlacementOrder).Distinct().Count();
+
+        <cache expires-after="@TimeSpan.FromSeconds(120)">
+            @for (int i = 1; i <= totalPlaceHolder; i++)
+            {
+                var componets = layoutInformation.LayoutComponents.Where(x => x.ComponentType == "header").Where(p => p.PlacementOrder == i).ToList();
+
+                if (componets.Count() > 1)
+                {
+                    <div class="row">
+
+
+                        @foreach (var component in componets.OrderBy(o => o.ComponentPlacementType))
+                        {
+                            <div class="col-md-@component.ComponentPresenceType">
+
+                                @if (component.DisplayOption)
+                                {
+
+                                    @await Component.InvokeAsync(component.ComponentCategory, new { ComponentName = component.ComponentName, ProcedureName = component.ProcedureName, Id = Model.RecordId })
+
+                                }
+
+                            </div>
+                        }
+
+                    </div>
+                }
+                else
+                {
+                    var component = componets.FirstOrDefault();
+
+                    if (component != null)
+                    {
+                        @if (component.DisplayOption)
+                        {
+
+                            @await Component.InvokeAsync(component.ComponentCategory, new { ComponentName = component.ComponentName, ProcedureName = component.ProcedureName, Id = Model.RecordId })
+
+                        }
+                    }
+                }
+
+            }
+        </cache>
+    }
+    catch (Exception ex)
+    {
+        <div>
+
+        </div>
+    }
+
+    @RenderBody()
+
+    @try
+    {
+
+        int totalPlaceHolder = layoutInformation.LayoutComponents.Where(x => x.ComponentType == "footer").Select(s => s.PlacementOrder).Distinct().Count();
+
+        <cache expires-after="@TimeSpan.FromSeconds(120)">
+
+            @for (int i = 1; i <= totalPlaceHolder; i++)
+            {
+                var componets = layoutInformation.LayoutComponents.Where(x => x.ComponentType == "footer").Where(p => p.PlacementOrder == i).ToList();
+
+                if (componets.Count() > 1)
+                {
+                    <div class="row">
+
+                        @foreach (var component in componets.OrderBy(o => o.ComponentPlacementType))
+                        {
+                            <div class="col-md-@component.ComponentPresenceType">
+
+                                @if (component.DisplayOption)
+                                {
+
+                                    @await Component.InvokeAsync(component.ComponentCategory, new { ComponentName = component.ComponentName, ProcedureName = component.ProcedureName, Id = Model.RecordId })
+
+                                }
+
+                            </div>
+                        }
+
+                    </div>
+                }
+                else
+                {
+                    var component = componets.FirstOrDefault();
+
+                    if (component != null)
+                    {
+                        @if (component.DisplayOption)
+                        {
+
+                            @await Component.InvokeAsync(component.ComponentCategory, new { ComponentName = component.ComponentName, ProcedureName = component.ProcedureName, Id = Model.RecordId })
+
+                        }
+                    }
+                }
+
+            }
+        </cache>
+    }
+    catch (Exception ex)
+    {
+        <div>
+
+        </div>
+    }
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="https://www.google.com/recaptcha/api.js?render=6LfubboZAAAAAMLrZCe805IO5_OhIpPVzGq3rn2p"></script>
+    <script src="/js/all.js"></script>
+    <script>
+        setTimeout(function () {
+            $('.myModal').modal();
+        }, 2400);
+    </script>
+    <script>
+
+
+        $('#requestforAppointment').click(function (e) {
+            e.preventDefault();
+
+            var form = $('#requestforappointmentForm');
+
+            if (ValidateForm()) {
+
+                grecaptcha.ready(function () {
+                    grecaptcha.execute('6LfubboZAAAAAMLrZCe805IO5_OhIpPVzGq3rn2p', { action: 'homepage' }).then(function (token) {
+
+                        if (confirm('Are you sure you want to submit this appoitment ?')) {
+
+                            alert('We are submiting your request. Please wait.');
+
+                            $.ajax({
+                                type: 'POST',
+                                url: '/Home/BookAppointment',
+                                data: $('#requestforappointmentForm').serialize() + "&token=" + token,
+                                success: function (data) {
+                                    if (data) {
+                                        alert('Your appointment has been successfuly submited.');
+                                    }
+                                    else {
+                                        alert('Something went wrong.');
+                                    }
+                                },
+                                contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+                                dataType: 'json'
+                            });
+                        }
+                    });
+                });
+            } else {
+                alert('Please fill all details for appointment');
+            }
+        });
+
+        function ValidateForm() {
+            var isFormValid = true;
+
+            $("#requestforappointmentForm input,select").each(function () {
+                var FieldId = "span_" + $(this).attr("id");
+                if ($.trim($(this).val()).length == 0 || $.trim($(this).val()) == 0) {
+                    $(this).addClass("highlight");
+
+                    //Show required message along with the field
+                    if ($("#" + FieldId).length == 0) {
+                        $("<span class='error' id='" + FieldId + "'>Required</span>").insertAfter(this);
+                    }
+                    //If you fill and again make the field empty in that case again show the message
+                    if ($("#" + FieldId).css('display') == 'none') {
+                        $("#" + FieldId).fadeIn(500);
+                    }
+                    //$(this).focus();
+                    isFormValid = false;
+
+                }
+                else {
+                    $(this).removeClass("highlight");
+                    if ($("#" + FieldId).length > 0) {
+                        // Hide the message with the fade out effect
+                        $("#" + FieldId).fadeOut(1000);
+                    }
+                }
+            });
+            return isFormValid;
+        }
+
+    </script>
+
+
+    @RenderSection("Scripts", required: false)
+
+
+
+</body>
+</html>

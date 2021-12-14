@@ -1,0 +1,64 @@
+﻿@model GlobalCollege.Admin.Models.CardActivationViewModel
+@{
+    ViewBag.Title = "Activate card";
+    Layout = "~/Views/Shared/frontend.cshtml";
+}
+
+
+<div class="register-box">
+    <div class="register-logo">
+        <a href="/"><b>Gift</b> Card</a>
+    </div>
+    <div class="register-box-body">
+        <p class="login-box-msg">Activate new gift card</p>
+        @using (Html.BeginForm("ActivateCard", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", autocomplete = "off" }))
+        {
+            @Html.AntiForgeryToken()
+
+            if ((bool)ViewBag.Status)
+            {
+                @Html.ValidationSummary("", new { @class = "text-success" })
+            }
+            else
+            {
+                @Html.ValidationSummary("", new { @class = "text-danger" })
+            }
+
+
+            <div class="form-group has-feedback">
+                <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Enter registered valid card number"></i> Card Number</label>
+                @Html.PasswordFor(m => m.CardNumber, new { @class = "form-control", @placeholder = "Enter your card number" })
+                @Html.ValidationMessageFor(m => m.CardNumber, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group">
+                <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Enter registered phone number"></i> Phone Number </label>
+                @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Enter your phone number" })
+                @Html.ValidationMessageFor(m => m.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Enter registered valid password"></i> PIN Number </label>
+                @Html.PasswordFor(m => m.PINNumber, new { @class = "form-control", @placeholder = "Enter your pin number" })
+                @Html.ValidationMessageFor(m => m.PINNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="Enter registered valid password"></i> Confirm PIN Number </label>
+                @Html.PasswordFor(m => m.ConfirmPINNumber, new { @class = "form-control", @placeholder = "Confirm your pin number" })
+                @Html.ValidationMessageFor(m => m.ConfirmPINNumber, "", new { @class = "text-danger" })
+            </div>
+            <div class="row">
+
+                @{
+                    if (!(bool)ViewBag.response && !(bool)ViewBag.Status)
+                    {
+                        <div class="col-xs-6">
+                            <button type="submit" class="btn btn-primary btn-block btn-flat">Activate Card</button>
+                        </div>
+                    }
+                }
+                <!-- /.col -->
+            </div>
+                    }
+    </div>
+    <!-- /.form-box -->
+</div>

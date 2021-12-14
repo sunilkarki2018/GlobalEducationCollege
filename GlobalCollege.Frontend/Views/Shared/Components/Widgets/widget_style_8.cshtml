@@ -1,0 +1,39 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<!-- FULL COLUMN ADMISSION  -->
+<section id="affilation__">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 wow bounceInDown" style="visibility: visible; animation-name: bounceInDown;"></div>
+            <div class="col-lg-6 ml-auto">
+                <div class="addmission__open wow pulse" style="visibility: visible; animation-name: pulse;">
+                    <h2 class="section-title">Registration open</h2>
+
+                    @foreach (var item in Model.AdmissionList.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="admission-open">
+                            <p>
+                                <strong>@item.Title</strong>
+                                @Html.Raw(item.ShortDescription)
+                            </p>
+                            <div>
+                                <a href="http://admin.globalcollege.edu.np/OnlineRegistration" class="btn-custom" target="_blank">
+                                    Apply Now <i class="fas fa-arrow-right"
+                                                 aria-hidden="true"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- FULL COLUMN ADMISSION  -->

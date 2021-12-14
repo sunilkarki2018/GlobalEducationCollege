@@ -1,0 +1,48 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WhyusViewComponentModel
+@{
+    Layout = "";
+}
+
+<section id="news_and_facility">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-12 ml-auto vertical_seperatorEye">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="valley_view-heading">
+                            <h1>Our Facility</h1>
+
+                        </div>
+                    </div>
+
+
+                    @foreach (var item in Model.Facilities.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="col-lg-6">
+                            <div class="valley_viewEyeWrapper">
+                                <div class="icons_view">
+                                    <img src="@item.ThumbnailImageLink" alt="">
+                                </div>
+                                <div class="content_valleyEye">
+                                    <h5>@item.Title</h5>
+
+                                    <p>
+                                        @Html.Raw(item.ShortDescription)
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+
+                    @*<div class="col-lg-12 text-center">
+                        <br>
+                        <br> <a href="/ContentManagement/FacilitySetup/Index" class="btn btn-common">View All</a>
+
+                    </div>*@
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

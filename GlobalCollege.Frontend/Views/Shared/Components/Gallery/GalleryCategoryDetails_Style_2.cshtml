@@ -1,0 +1,21 @@
+﻿@model GlobalCollege.Entity.ViewComponent.GalleryViewComponentModel
+@{
+    Layout = "";
+}
+
+<section id="image-gallery">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="lightgallery">
+                    @foreach (var item in Model.GalleryCategory.GallerySetups.OrderBy(x => x.PlacementOrder))
+                    {
+                        <a href="@item.BannerImageLink">
+                            <img src="@item.ThumbnailImageLink">
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,43 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TestimonialsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<!-- testimonial style 1 -->
+<section class="globalreview clientReview sectionTop">
+    <div class="container">
+        <div class="global--section global__section--mb text-center">
+            <p>client review</p>
+            <h2>What Student Says About Us?</h2>
+
+            <p class="global__section--desc m--auto">
+               @Model.Description
+            </p>
+        </div>
+        <div class="clientReview__card global--card text-center">
+            <div class="quote__sign">
+                <i class="fas fa-quote-left"></i>
+            </div>
+            <div id="clientReview__carousel" class="owl-carousel owl-theme clientReview__slide">
+                @foreach (var item in Model.TestimonialsList)
+                {
+                    <div class="item">
+                        <figure>
+                            <img src="@item.ThumbnailImageLink" alt="title">
+                        </figure>
+                        <h3>@item.Name</h3>
+
+                        <div class="clientReview__desc">
+                            <p>
+                                @Html.Raw(item.ShortStory)
+                            </p>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- testimonial style 1 -->

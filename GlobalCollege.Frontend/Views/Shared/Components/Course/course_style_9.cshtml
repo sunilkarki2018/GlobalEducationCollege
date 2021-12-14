@@ -1,0 +1,25 @@
+﻿@model GlobalCollege.Entity.ViewComponent.CourseViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="courseList">
+    <div class="container">
+        <div class="get_start_carousel">
+            <div class="row">
+                @foreach (var item in Model.CourseList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="col-md-6 col-lg-4">
+                        <a href="/ContentManagement/CourseSetup/Details?Id=@item.Id">
+                            <div class="getStart__wrapper wow bounceInUp" style="visibility: visible; animation-name: bounceInUp;">
+                                <img src="@item.ThumbnailImageLink" alt="a-level">
+                                <h5>@item.Title</h5>
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

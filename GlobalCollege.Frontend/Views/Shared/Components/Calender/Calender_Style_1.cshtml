@@ -1,0 +1,64 @@
+﻿@model GlobalCollege.Entity.ViewComponent.CalenderViewComponentModel
+
+@{
+    Layout = "";
+}
+
+<div class="header_images _research-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="header_text-white">
+                    <h2>College Administration</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="event-calendar">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="calendar"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+
+         var events=   @Model.Events.Select(s => new {
+                      title= s.Title,
+                      start=s.EventDate.ToShortDateString(),
+                      url= string.Format("/ContentManagement/EventSetup/Details?Id={0}",s.Id)
+
+                  }).ToArray();
+
+            $('#calendar').fullCalendar({
+                header: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'month,agendaWeek,agendaDay'
+                },
+                defaultDate: @DateTime.Now.ToShortDateString(),
+                editable: false,
+                eventLimit: true,
+                events: events,
+                eventClick: function (event) {
+                    if (event.url) {
+                        $.magnificPopup.open({
+                            items: {
+                                iframe: event.url,
+                                type: 'iframe'
+                            }
+                        });
+                    }
+                }
+
+            });
+        })
+    </script>
+}

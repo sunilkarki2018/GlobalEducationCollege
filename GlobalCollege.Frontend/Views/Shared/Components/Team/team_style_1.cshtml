@@ -1,0 +1,54 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TeamViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<!-- team style 1 -->
+<div class="institution3">
+    <section class="school-page-section pt-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 offset-lg-3 text-center section-heading Learn More">
+                    <h2>Meet Our Qualified Teachers</h2>
+
+                    <p class="lead">
+                        @Html.Raw(Model.Description)
+                    </p>
+                </div>
+            </div>
+            <!-- END row -->
+            <div class="row">
+                @foreach (var item in Model.TeamList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="col-md-3 col-sm-6">
+                        <div class="school-page-teacher text-center Learn More">
+                            <figure class="media">
+                                <img src="@item.ThumbnailImageLink" alt="school" class="img-responsive">
+                            </figure>
+                            <div class="text">
+                                <h3>@item.Name</h3>
+
+                                <p>@item.TeachingSubject</p>
+                                <ul class="school-page-footer-social">
+                                    <li class="twitter">
+                                        <a href="@item.TwitterLink"><i class="icon-twitter"></i></a>
+                                    </li>
+                                    <li class="facebook">
+                                        <a href="@item.FacebookLink"><i class="icon-facebook2"></i></a>
+                                    </li>
+                                    <li class="icon-skype">
+                                        <a href="@item.SkypeLink"><i class="icon-skype2"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+
+            </div>
+        </div>
+    </section>
+</div>
+<!-- team style 1 -->

@@ -1,0 +1,32 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TestimonialsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="program__successStories">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>Success Stories</h3>
+            </div>
+            <div class="col-lg-12">
+                <div class="program__success owl-carousel">
+                    @foreach (var tetimonial in Model.TestimonialsList)
+                    {
+                        <div>
+                            <div class="success_stories-slider">
+                                @Html.Raw(tetimonial.ShortStory)
+                                <div class="success-nameCard">
+                                    <span>@tetimonial.Name</span>
+                                    <span>@tetimonial.Year.Year @tetimonial.Designation </span>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

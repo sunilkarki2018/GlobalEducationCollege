@@ -1,0 +1,36 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+<section class="globalAdmission admission sectionTop">
+    <div class="admission__bg">
+        <div class="container">
+            <div class="row">
+                @foreach (var item in Model.AdmissionList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="col* col-md-6 col-lg-6 admission__list">
+                        <div class="admission__box">
+                            <h3>@item .Title </h3>
+
+                            <p>@Html.Raw(item.ShortDescription)</p>
+                            <div class="admission__btn global--btn">
+                                <a href="/ContentManagement/AdmissionSetup/Details?Id=@item.Id" target="_blank">
+                                    Apply Online
+                                    <i class="fas fa-angle-right" aria-hidden="true"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="admission__desc">
+                <p>
+                   @Html.Raw(Model.AdmissionDescription)
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+

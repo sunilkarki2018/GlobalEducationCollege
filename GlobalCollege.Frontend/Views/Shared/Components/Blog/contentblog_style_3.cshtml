@@ -1,0 +1,21 @@
+﻿@model List<string>
+@{
+    Layout = "";
+
+}
+
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-lg-4 col-md-4">
+                <p class="research-description">
+                    @Html.Raw(item)
+                </p>
+            </div>
+        }
+    </div>
+</div>
+
+

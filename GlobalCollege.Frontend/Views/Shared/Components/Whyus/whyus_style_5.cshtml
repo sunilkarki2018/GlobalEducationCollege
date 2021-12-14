@@ -1,0 +1,46 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WhyusViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="globalChoose chooseUs sectionTop">
+    <div class="container">
+        <div class="global--section global__section--mb">
+            <p>why choose us</p>
+            <h2>Outstanding Digital Experience</h2>
+
+            <p class="global__section--desc global__section--tb">
+                @Html.Raw(Model.Description)
+            </p>
+        </div>
+        <div class="row">
+            <div class="col* col-md-8 col-lg-9 chooseUs__left">
+                <div class="chooseUs__wrap">
+                    <ul class="list-unstyled">
+                        @{int Count = 1; }
+                        @foreach (var item in Model.InstitutionAttributeList.OrderBy(x => x.PlacementOrder))
+                        {
+                            <li>
+                                <div class="chooseUs_flex">
+                                    <span class="chooseUs__num">@Count</span>
+                                    @{ Count = Count + 1; }
+                                    <p class="chooseUs_infos">@item.Title</p>
+                                </div>
+                            </li>
+                        }
+
+
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col* col-md-4 col-lg-3 chooseUs__right">
+                <figure>
+                    <img src="/img/choose.png" alt="title">
+                </figure>
+            </div>
+        </div>
+    </div>
+</section>
+

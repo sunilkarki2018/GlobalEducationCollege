@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{74148D10-CD2A-4F3B-928C-A0A30C816393}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>GlobalCollege.Entity</RootNamespace>
+    <AssemblyName>GlobalCollege.Entity</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.3\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.3\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DTO\Administrator\ApplicationGroupDTO.cs" />
+    <Compile Include="DTO\Administrator\ApplicationRoleDetailsDTO.cs" />
+    <Compile Include="DTO\Administrator\ApplicationRoleDTO.cs" />
+    <Compile Include="DTO\Administrator\ApplicationUserClaimDTO.cs" />
+    <Compile Include="DTO\Administrator\ApplicationUserDTO.cs" />
+    <Compile Include="DTO\Administrator\ApplicationUserGroupDTO.cs" />
+    <Compile Include="DTO\Administrator\ApplicationUserLoginDTO.cs" />
+    <Compile Include="DTO\Administrator\ApplicationUserRoleDTO.cs" />
+    <Compile Include="DTO\Base\AdditionalDropdownParameter.cs" />
+    <Compile Include="DTO\Base\BaseEntityDTO.cs" />
+    <Compile Include="DTO\Base\GlobalCollegeSelectListItem.cs" />
+    <Compile Include="DTO\Base\PagedResult.cs" />
+    <Compile Include="DTO\ChangeLog\ChangeLogDTO.cs" />
+    <Compile Include="DTO\ContentManagement\AboutUsSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\AdmissionSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\AffiliationSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\BannerSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\BlogSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\CareerSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ContactForScholarshipDTO.cs" />
+    <Compile Include="DTO\ContentManagement\CourseAttributeSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\CourseSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\EventSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\FacilitySetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\FacultyAttributeSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\FacultyContactDTO.cs" />
+    <Compile Include="DTO\ContentManagement\FacultySetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\FAQSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\GalleryCategorySetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\GallerySetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\HowtoApplySetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\InstitutionAttributeSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\InstitutionContactSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\InstitutionHistorySetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\InstitutionSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\InstutionAddressSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\LifeAtInstitutionAttributeSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\LifeAtInstitutionSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\MessageSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\NewsSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ProgramAttributeSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ProgramSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ResearchCategoryDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ResearchSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ScholarFAQSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ScholarSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ScholarshipsAttributeSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\ScholarshipsSourcesDTO.cs" />
+    <Compile Include="DTO\ContentManagement\TeamAttributeSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\TeamSetupDTO.cs" />
+    <Compile Include="DTO\ContentManagement\TestimonialSetupDTO.cs" />
+    <Compile Include="DTO\DocumentManagement\DocumentCategoryDTO.cs" />
+    <Compile Include="DTO\DocumentManagement\DocumentSetupDTO.cs" />
+    <Compile Include="DTO\DocumentManagement\DocumentUploadDTO.cs" />
+    <Compile Include="DTO\MenuManagement\MenuSetupDTO.cs" />
+    <Compile Include="DTO\MenuManagement\SubMenuSetupDTO.cs" />
+    <Compile Include="DTO\PageManagement\ComponentSetupDTO.cs" />
+    <Compile Include="DTO\PageManagement\FrontendPageInformation.cs" />
+    <Compile Include="DTO\PageManagement\LayoutComponentSetupDTO.cs" />
+    <Compile Include="DTO\PageManagement\LayoutSetupDTO.cs" />
+    <Compile Include="DTO\PageManagement\PageComponentSetupDTO.cs" />
+    <Compile Include="DTO\PageManagement\PageSetupDTO.cs" />
+    <Compile Include="DTO\Setting\ChildTableInformationDTO.cs" />
+    <Compile Include="DTO\Setting\ExceptionLogger\ExceptionLoggerDTO.cs" />
+    <Compile Include="DTO\Setting\ModuleBussinesLogicSetupDTO.cs" />
+    <Compile Include="DTO\Setting\ModuleHtmlAttributeSetupDTO.cs" />
+    <Compile Include="DTO\Setting\ModuleSetupDTO.cs" />
+    <Compile Include="DTO\Setting\ModuleSummary\ModuleBussinesLogicSummary.cs" />
+    <Compile Include="DTO\Setting\ModuleSummary\ModuleSummary.cs" />
+    <Compile Include="DTO\Setting\ModuleTypeSetupDTO.cs" />
+    <Compile Include="DTO\Setting\ModuleValidationAttributeSetupDTO.cs" />
+    <Compile Include="DTO\Setting\StaticDataDetailsDTO.cs" />
+    <Compile Include="DTO\Setting\StaticDataMasterDTO.cs" />
+    <Compile Include="Entity\Administrator\ApplicationGroup.cs" />
+    <Compile Include="Entity\Administrator\ApplicationRole.cs" />
+    <Compile Include="Entity\Administrator\ApplicationRoleDetails.cs" />
+    <Compile Include="Entity\Administrator\ApplicationUser.cs" />
+    <Compile Include="Entity\Administrator\ApplicationUserClaim.cs" />
+    <Compile Include="Entity\Administrator\ApplicationUserGroup.cs" />
+    <Compile Include="Entity\Administrator\ApplicationUserLogin.cs" />
+    <Compile Include="Entity\Administrator\ApplicationUserRole.cs" />
+    <Compile Include="Entity\Base\BaseEntity.cs" />
+    <Compile Include="Entity\Base\ChangeLogList.cs" />
+    <Compile Include="Entity\ContentManagement\AboutUsSetup.cs" />
+    <Compile Include="Entity\ContentManagement\AdmissionSetup.cs" />
+    <Compile Include="Entity\ContentManagement\AffiliationSetup.cs" />
+    <Compile Include="Entity\ContentManagement\BannerSetup.cs" />
+    <Compile Include="Entity\ContentManagement\BlogSetup.cs" />
+    <Compile Include="Entity\ContentManagement\CareerSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ContactForScholarship.cs" />
+    <Compile Include="Entity\ContentManagement\CourseAttributeSetup.cs" />
+    <Compile Include="Entity\ContentManagement\CourseSetup.cs" />
+    <Compile Include="Entity\ContentManagement\EventSetup.cs" />
+    <Compile Include="Entity\ContentManagement\FacilitySetup.cs" />
+    <Compile Include="Entity\ContentManagement\FacultyAttributeSetup.cs" />
+    <Compile Include="Entity\ContentManagement\FacultyContact.cs" />
+    <Compile Include="Entity\ContentManagement\FacultySetup.cs" />
+    <Compile Include="Entity\ContentManagement\FAQSetup.cs" />
+    <Compile Include="Entity\ContentManagement\GalleryCategorySetup.cs" />
+    <Compile Include="Entity\ContentManagement\GallerySetup.cs" />
+    <Compile Include="Entity\ContentManagement\HowtoApplySetup.cs" />
+    <Compile Include="Entity\ContentManagement\InstitutionAttributeSetup.cs" />
+    <Compile Include="Entity\ContentManagement\InstitutionContactSetup.cs" />
+    <Compile Include="Entity\ContentManagement\InstitutionHistorySetup.cs" />
+    <Compile Include="Entity\ContentManagement\InstitutionSetup.cs" />
+    <Compile Include="Entity\ContentManagement\InstutionAddressSetup.cs" />
+    <Compile Include="Entity\ContentManagement\LifeAtInstitutionAttributeSetup.cs" />
+    <Compile Include="Entity\ContentManagement\LifeAtInstitutionSetup.cs" />
+    <Compile Include="Entity\ContentManagement\MessageSetup.cs" />
+    <Compile Include="Entity\ContentManagement\NewsSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ProgramAttributeSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ProgramSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ResearchCategory.cs" />
+    <Compile Include="Entity\ContentManagement\ResearchSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ScholarFAQSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ScholarSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ScholarshipsAttributeSetup.cs" />
+    <Compile Include="Entity\ContentManagement\ScholarshipsSources.cs" />
+    <Compile Include="Entity\ContentManagement\TeamAttributeSetup.cs" />
+    <Compile Include="Entity\ContentManagement\TeamSetup.cs" />
+    <Compile Include="Entity\ContentManagement\TestimonialSetup.cs" />
+    <Compile Include="Entity\DocumentManagement\DocumentCategory.cs" />
+    <Compile Include="Entity\DocumentManagement\DocumentSetup.cs" />
+    <Compile Include="Entity\DocumentManagement\DocumentUpload.cs" />
+    <Compile Include="Entity\MenuManagement\MenuSetup.cs" />
+    <Compile Include="Entity\MenuManagement\SubMenuSetup.cs" />
+    <Compile Include="Entity\PageManagement\ComponentSetup.cs" />
+    <Compile Include="Entity\PageManagement\LayoutComponentSetup.cs" />
+    <Compile Include="Entity\PageManagement\LayoutSetup.cs" />
+    <Compile Include="Entity\PageManagement\PageComponentSetup.cs" />
+    <Compile Include="Entity\PageManagement\PageSetup.cs" />
+    <Compile Include="Entity\Setting\ChildTableInformation.cs" />
+    <Compile Include="Entity\Setting\ExceptionLogger\ExceptionLogger.cs" />
+    <Compile Include="Entity\Setting\FileSetting\FileSetup.cs" />
+    <Compile Include="Entity\Setting\ModuleBussinesLogicSetup.cs" />
+    <Compile Include="Entity\Setting\ModuleHtmlAttributeSetup.cs" />
+    <Compile Include="Entity\Setting\ModuleSetup.cs" />
+    <Compile Include="Entity\Setting\ModuleTypeSetup.cs" />
+    <Compile Include="Entity\Setting\ModuleValidationAttributeSetup.cs" />
+    <Compile Include="Entity\Setting\StaticDataDetails.cs" />
+    <Compile Include="Entity\Setting\StaticDataMaster.cs" />
+    <Compile Include="Enum\Action\DataEntry.cs" />
+    <Compile Include="Enum\Action\DeletedStatus.cs" />
+    <Compile Include="Enum\Action\OnlineAccountOpeningEntityState.cs" />
+    <Compile Include="Enum\Action\RecordStatus.cs" />
+    <Compile Include="Enum\Module\CurrentAction.cs" />
+    <Compile Include="Enum\Module\ModuleName.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Validation\ValidationResult.cs" />
+    <Compile Include="ViewComponent\Banner\BannerViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Blog\BlogViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Calender\CalenderViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Course\CourseViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Events\EventsViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Facts\FactsViewComponentModel.cs" />
+    <Compile Include="ViewComponent\FAQ\FAQViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Footer\FooterViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Gallery\GalleryViewComponentModel.cs" />
+    <Compile Include="ViewComponent\LifeatGCI\LifeatGCIViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Menu\MenuViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Message\MessageViewComponentModel.cs" />
+    <Compile Include="ViewComponent\News\NewsViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Program\ProgramViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Research\ResearchViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Scholar\ScholarViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Team\TeamViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Testimonials\TestimonialsViewComponentModel.cs" />
+    <Compile Include="ViewComponent\ViewComponentParameter.cs" />
+    <Compile Include="ViewComponent\Whyus\WhyusViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Widgets\ContactInformationViewModel.cs" />
+    <Compile Include="ViewComponent\Widgets\DetailViewComponentModel.cs" />
+    <Compile Include="ViewComponent\Widgets\WidgetsViewComponentModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
+</Project>

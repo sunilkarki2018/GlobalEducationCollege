@@ -1,0 +1,70 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="homenews__event sectionTop">
+    <div class="container">
+        <div class="row">
+            <div class="col* col-md-7 col-lg-7 newsEvent__left">
+                <h1 class="homeInst_title">Latest Posts</h1>
+
+                <div class="row no-gutters">
+                    @foreach (var item in Model.NewsList.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="col* col-md-6 col-lg-6">
+                            <div class="news__card">
+                                <figure>
+                                    <img src="@item.ThumbnailImageLink" alt="">
+                                    <div class="on-img-date">
+                                        <span class="day-month">@item.NewsDate.Day @item.NewsDate.ToString("MMM")</span>
+                                        <span class="year">@item.NewsDate.Year</span>
+
+                                    </div>
+                                </figure>
+                                <p>
+                                    <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id">@item.Title</a>
+                                </p>
+                                <div class="post_date_update">
+                                    <span>
+                                        <i class="fa fa-user"></i> &nbsp;&nbsp;<strong>By</strong> @item.Author
+                                    </span><span>
+                                        &nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-tag"></i>@item.Tags
+                                    </span>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            <div class="col* col-md-5 col-lg-5 newsEvent__right">
+                <h1 class="homeInst_title">Upcoming Events </h1>
+
+                <div class="card blog-widget">
+
+                    @foreach (var item in Model.EventList.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="event-sideBox">
+                            <div class="date">
+                                <h2>@item.EventDate.Day</h2>
+                                <span>@item.EventDate.ToString("MMM")</span>
+
+                            </div>
+                            <div class="info">
+                                <a href="/ContentManagement/EventSetup/Details?Id=@item.Id"><h2>@item.Title</h2></a>
+                                <span>
+                                    <i class="fa fa-clock"></i>@item.Time <i class="fa fa-map-marker"></i>@item.Venue
+                                </span>
+
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

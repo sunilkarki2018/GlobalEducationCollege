@@ -1,0 +1,61 @@
+﻿@model GlobalCollege.Entity.ViewComponent.MessageViewComponentModel
+@{
+    Layout = "";
+
+}
+<section id="AboutUs">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-9">
+                <div class="flexing_box wow shake">
+                    <div class="textAbout">
+                        <div class="h4_wrapping">
+                            <h4>
+                                @Model.Message.Quote
+                            </h4>
+
+                        </div>
+                        <p>
+                            @Html.Raw(Model.Message.ShortDescription)
+                        </p>
+                        <div class="d-flex justify-content-between align-items-start pt-5 mt-5">
+                            <div class="info_wrapper">
+                                <span class="text__name">@Model.Message.MessageBy</span>
+                                <span class="degination">-@Model.Message.Designation</span>
+
+                            </div>
+                            <span class="text__button">
+
+                                <a href="/ContentManagement/MessageSetup/Details?Id=@Model.Message.Id" class="btn btn-primary">
+                                    Explore More <i class="fas fa-angle-right"></i>
+                                </a>
+                            </span>
+                        </div>
+
+                    </div>
+                    <div class="figureImage">
+                        <figure>
+                            <img src="@Model.Message.ThumbnailImageLink" alt="">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3">
+                <div class="data__list wow bounceInRight">
+                    <ul>
+                        @foreach (var item in Model.AboutUsList.OrderBy(x => x.PlacementOrder))
+                        {
+                            <li>
+                                <a href="/Details/Index?RecordType=ContentManagement.AboutUsSetup&Id=@item.Id">
+                                    <span class="about-icons"><img src="@item.ThumbnailImageLink" alt="abt"></span>@item.Title <i class="fas fa-angle-right"></i>
+                                </a>
+
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>GlobalCollege.Database</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{98a7db1b-33cf-4c59-92d8-57705dd0085d}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql130DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>GlobalCollege.Database</RootNamespace>
+    <AssemblyName>GlobalCollege.Database</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="Setting\" />
+    <Folder Include="Setting\Tables\" />
+    <Folder Include="ContentManagement\" />
+    <Folder Include="ContentManagement\Tables\" />
+    <Folder Include="Administrator\" />
+    <Folder Include="Administrator\Tables\" />
+    <Folder Include="Security\" />
+    <Folder Include="Administrator\Stored Procedures" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationGroup" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationRole" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationRoleDetails" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationUser" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationUserClaim" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationUserGroup" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationUserLogin" />
+    <Folder Include="Administrator\Stored Procedures\ApplicationUserRole" />
+    <Folder Include="ContentManagement\Stored Procedures" />
+    <Folder Include="DocumentManagement" />
+    <Folder Include="DocumentManagement\Stored Procedures" />
+    <Folder Include="DocumentManagement\Stored Procedures\DocumentCategory" />
+    <Folder Include="DocumentManagement\Stored Procedures\DocumentSetup" />
+    <Folder Include="DocumentManagement\Stored Procedures\DocumentUpload" />
+    <Folder Include="Setting\Stored Procedures" />
+    <Folder Include="Setting\Stored Procedures\ChildTableInformation" />
+    <Folder Include="Setting\Stored Procedures\ModuleBussinesLogicSetup" />
+    <Folder Include="Setting\Stored Procedures\ModuleHtmlAttributeSetup" />
+    <Folder Include="Setting\Stored Procedures\ModuleSetup" />
+    <Folder Include="Setting\Stored Procedures\ModuleTypeSetup" />
+    <Folder Include="Setting\Stored Procedures\ModuleValidationAttributeSetup" />
+    <Folder Include="Setting\Stored Procedures\ProductSetup" />
+    <Folder Include="Setting\Stored Procedures\StaticDataDetails" />
+    <Folder Include="Setting\Stored Procedures\StaticDataMaster" />
+    <Folder Include="DocumentManagement\Tables\" />
+    <Folder Include="ContentManagement\Stored Procedures\TeamSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\AdmissionSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\AffiliationSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\BlogSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\CareerSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ContactForScholarship" />
+    <Folder Include="ContentManagement\Stored Procedures\CourseAttributeSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\CourseSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\EventSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\FacultyContact" />
+    <Folder Include="ContentManagement\Stored Procedures\FacultySetup" />
+    <Folder Include="ContentManagement\Stored Procedures\GalleryCategorySetup" />
+    <Folder Include="ContentManagement\Stored Procedures\GallerySetup" />
+    <Folder Include="ContentManagement\Stored Procedures\HowtoApplySetup" />
+    <Folder Include="ContentManagement\Stored Procedures\InstitutionAttributeSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\InstitutionContactSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\InstitutionHistorySetup" />
+    <Folder Include="ContentManagement\Stored Procedures\InstitutionSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\InstutionAddressSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\LifeAtInstitutionAttributeSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\LifeAtInstitutionSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\MessageSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\NewsSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ProgramAttributeSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ProgramSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ResearchCategory" />
+    <Folder Include="ContentManagement\Stored Procedures\ResearchSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ScholarFAQSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ScholarSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ScholarshipsAttributeSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\ScholarshipsSources" />
+    <Folder Include="ContentManagement\Stored Procedures\TeamAttributeSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\FAQSetup" />
+    <Folder Include="MenuManagement" />
+    <Folder Include="MenuManagement\Stored Procedures" />
+    <Folder Include="MenuManagement\Stored Procedures\MenuSetup" />
+    <Folder Include="MenuManagement\Stored Procedures\SubMenuSetup" />
+    <Folder Include="PageManagement" />
+    <Folder Include="PageManagement\Stored Procedures" />
+    <Folder Include="PageManagement\Stored Procedures\LayoutComponentSetup" />
+    <Folder Include="PageManagement\Stored Procedures\LayoutSetup" />
+    <Folder Include="PageManagement\Stored Procedures\PageComponentSetup" />
+    <Folder Include="PageManagement\Stored Procedures\PageSetup" />
+    <Folder Include="PageManagement\Tables\" />
+    <Folder Include="MenuManagement\Tables\" />
+    <Folder Include="PageManagement\Stored Procedures\ComponentSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\TestimonialSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\AboutUsSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\BannerSetup" />
+    <Folder Include="ContentManagement\Stored Procedures\FacilitySetup" />
+    <Folder Include="ViewComponent" />
+    <Folder Include="ViewComponent\Stored Procedures" />
+    <Folder Include="ViewComponent\Stored Procedures\Banner" />
+    <Folder Include="ViewComponent\Stored Procedures\Blog" />
+    <Folder Include="ViewComponent\Stored Procedures\Course" />
+    <Folder Include="ViewComponent\Stored Procedures\Events" />
+    <Folder Include="ViewComponent\Stored Procedures\Facts" />
+    <Folder Include="ViewComponent\Stored Procedures\Footer" />
+    <Folder Include="ViewComponent\Stored Procedures\Menu" />
+    <Folder Include="ViewComponent\Stored Procedures\Message" />
+    <Folder Include="ViewComponent\Stored Procedures\News" />
+    <Folder Include="ViewComponent\Stored Procedures\Team" />
+    <Folder Include="ViewComponent\Stored Procedures\Testimonials" />
+    <Folder Include="ViewComponent\Stored Procedures\Whyus" />
+    <Folder Include="ViewComponent\Stored Procedures\Widgets" />
+    <Folder Include="dbo\User Defined Types\" />
+    <Folder Include="ViewComponent\User Defined Types" />
+    <Folder Include="ViewComponent\Stored Procedures\Program" />
+    <Folder Include="ViewComponent\Stored Procedures\Research" />
+    <Folder Include="ViewComponent\Stored Procedures\LifeatGCI" />
+    <Folder Include="ViewComponent\Stored Procedures\Scholar" />
+    <Folder Include="ViewComponent\Stored Procedures\FAQ" />
+    <Folder Include="ViewComponent\Stored Procedures\Donate" />
+    <Folder Include="ViewComponent\Stored Procedures\Calender" />
+    <Folder Include="ViewComponent\Stored Procedures\Gallery" />
+    <Folder Include="ContentManagement\Stored Procedures\FacultyAttributeSetup" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\ExceptionLoggers.sql" />
+    <Build Include="dbo\Tables\__MigrationHistory.sql" />
+    <Build Include="Setting\Tables\ModuleTypeSetup.sql" />
+    <Build Include="Setting\Tables\ModuleValidationAttributeSetup.sql" />
+    <Build Include="Setting\Tables\ModuleHtmlAttributeSetup.sql" />
+    <Build Include="Setting\Tables\ModuleBussinesLogicSetup.sql" />
+    <Build Include="Setting\Tables\ModuleSetup.sql" />
+    <Build Include="Setting\Tables\ChildTableInformation.sql" />
+    <Build Include="Setting\Tables\StaticDataMaster.sql" />
+    <Build Include="Setting\Tables\StaticDataDetails.sql" />
+    <Build Include="ContentManagement\Tables\CourseAttributeSetup.sql" />
+    <Build Include="ContentManagement\Tables\ScholarshipsSources.sql" />
+    <Build Include="ContentManagement\Tables\ScholarshipsAttributeSetup.sql" />
+    <Build Include="ContentManagement\Tables\ScholarSetup.sql" />
+    <Build Include="ContentManagement\Tables\ContactForScholarship.sql" />
+    <Build Include="ContentManagement\Tables\CareerSetup.sql" />
+    <Build Include="ContentManagement\Tables\BlogSetup.sql" />
+    <Build Include="ContentManagement\Tables\ProgramAttributeSetup.sql" />
+    <Build Include="ContentManagement\Tables\ProgramSetup.sql" />
+    <Build Include="ContentManagement\Tables\InstutionAddressSetup.sql" />
+    <Build Include="ContentManagement\Tables\InstitutionHistorySetup.sql" />
+    <Build Include="ContentManagement\Tables\InstitutionContactSetup.sql" />
+    <Build Include="ContentManagement\Tables\InstitutionAttributeSetup.sql" />
+    <Build Include="ContentManagement\Tables\AffiliationSetup.sql" />
+    <Build Include="ContentManagement\Tables\InstitutionSetup.sql" />
+    <Build Include="ContentManagement\Tables\AdmissionSetup.sql" />
+    <Build Include="ContentManagement\Tables\TeamSetup.sql" />
+    <Build Include="ContentManagement\Tables\TeamAttributeSetup.sql" />
+    <Build Include="ContentManagement\Tables\ScholarFAQSetup.sql" />
+    <Build Include="ContentManagement\Tables\ResearchSetup.sql" />
+    <Build Include="ContentManagement\Tables\ResearchCategory.sql" />
+    <Build Include="ContentManagement\Tables\PageSetup.sql" />
+    <Build Include="ContentManagement\Tables\PageComponentSetup.sql" />
+    <Build Include="ContentManagement\Tables\NewsSetup.sql" />
+    <Build Include="ContentManagement\Tables\MessageSetup.sql" />
+    <Build Include="ContentManagement\Tables\SubMenuSetup.sql" />
+    <Build Include="ContentManagement\Tables\MenuSetup.sql" />
+    <Build Include="ContentManagement\Tables\LifeAtInstitutionSetup.sql" />
+    <Build Include="ContentManagement\Tables\LifeAtInstitutionAttributeSetup.sql" />
+    <Build Include="ContentManagement\Tables\LayoutSetup.sql" />
+    <Build Include="ContentManagement\Tables\LayoutComponentSetup.sql" />
+    <Build Include="ContentManagement\Tables\HowtoApplySetup.sql" />
+    <Build Include="ContentManagement\Tables\GallerySetup.sql" />
+    <Build Include="ContentManagement\Tables\GalleryCategorySetup.sql" />
+    <Build Include="ContentManagement\Tables\FAQSetup.sql" />
+    <Build Include="ContentManagement\Tables\FacultySetup.sql" />
+    <Build Include="ContentManagement\Tables\FacultyContact.sql" />
+    <Build Include="ContentManagement\Tables\EventSetup.sql" />
+    <Build Include="ContentManagement\Tables\CourseSetup.sql" />
+    <Build Include="Administrator\Tables\ApplicationUserGroup.sql" />
+    <Build Include="Administrator\Tables\ApplicationGroup.sql" />
+    <Build Include="Administrator\Tables\ApplicationUserLogin.sql" />
+    <Build Include="Administrator\Tables\ApplicationUserClaim.sql" />
+    <Build Include="Administrator\Tables\ApplicationRoleDetails.sql" />
+    <Build Include="Administrator\Tables\ApplicationRole.sql" />
+    <Build Include="Administrator\Tables\ApplicationUserRole.sql" />
+    <Build Include="Administrator\Tables\ApplicationUser.sql" />
+    <Build Include="Security\Setting.sql" />
+    <Build Include="Security\ContentManagement.sql" />
+    <Build Include="Security\Administrator.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationGroup\GlobalCollege_SP_GetApplicationGroupList.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationRole\GlobalCollege_SP_GetApplicationRoleList.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationRoleDetails\GlobalCollege_SP_GetApplicationRoleDetailsList.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationUser\GlobalCollege_SP_GetApplicationUserList.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationUserClaim\GlobalCollege_SP_GetApplicationUserClaimList.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationUserGroup\GlobalCollege_SP_GetApplicationUserGroupList.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationUserLogin\GlobalCollege_SP_GetApplicationUserLoginList.sql" />
+    <Build Include="Administrator\Stored Procedures\ApplicationUserRole\GlobalCollege_SP_GetApplicationUserRoleList.sql" />
+    <Build Include="DocumentManagement\Stored Procedures\DocumentCategory\GlobalCollege_SP_GetDocumentCategoryList.sql" />
+    <Build Include="DocumentManagement\Stored Procedures\DocumentSetup\GlobalCollege_SP_GetDocumentSetupList.sql" />
+    <Build Include="DocumentManagement\Stored Procedures\DocumentUpload\GlobalCollege_SP_GetDocumentUploadList.sql" />
+    <Build Include="Setting\Stored Procedures\ChildTableInformation\GlobalCollege_SP_GetChildTableInformationList.sql" />
+    <Build Include="Setting\Stored Procedures\ModuleBussinesLogicSetup\GlobalCollege_SP_GetModuleBussinesLogicSetupList.sql" />
+    <Build Include="Setting\Stored Procedures\ModuleHtmlAttributeSetup\GlobalCollege_SP_GetModuleHtmlAttributeSetupList.sql" />
+    <Build Include="Setting\Stored Procedures\ModuleSetup\GlobalCollege_SP_GetModuleSetupList.sql" />
+    <Build Include="Setting\Stored Procedures\ModuleTypeSetup\GlobalCollege_SP_GetModuleTypeSetupList.sql" />
+    <Build Include="Setting\Stored Procedures\ModuleValidationAttributeSetup\GlobalCollege_SP_GetModuleValidationAttributeSetupList.sql" />
+    <Build Include="Setting\Stored Procedures\ProductSetup\GlobalCollege_SP_GetProductSetupList.sql" />
+    <Build Include="Setting\Stored Procedures\StaticDataDetails\GlobalCollege_SP_GetStaticDataDetailsList.sql" />
+    <Build Include="Setting\Stored Procedures\StaticDataMaster\GlobalCollege_SP_GetStaticDataMasterList.sql" />
+    <Build Include="DocumentManagement\Tables\DocumentUpload.sql" />
+    <Build Include="DocumentManagement\Tables\DocumentSetup.sql" />
+    <Build Include="DocumentManagement\Tables\DocumentCategory.sql" />
+    <Build Include="Security\DocumentManagement.sql" />
+    <Build Include="ContentManagement\Stored Procedures\TeamSetup\GlobalCollege_SP_GetTeamSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\AdmissionSetup\GlobalCollege_SP_GetAdmissionSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\AffiliationSetup\GlobalCollege_SP_GetAffiliationSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\BlogSetup\GlobalCollege_SP_GetBlogSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\CareerSetup\GlobalCollege_SP_GetCareerSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ContactForScholarship\GlobalCollege_SP_GetContactForScholarshipList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\CourseAttributeSetup\GlobalCollege_SP_GetCourseAttributeSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\CourseSetup\GlobalCollege_SP_GetCourseSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\EventSetup\GlobalCollege_SP_GetEventSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\FacultyContact\GlobalCollege_SP_GetFacultyContactList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\FacultySetup\GlobalCollege_SP_GetFacultySetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\GalleryCategorySetup\GlobalCollege_SP_GetGalleryCategorySetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\GallerySetup\GlobalCollege_SP_GetGallerySetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\HowtoApplySetup\GlobalCollege_SP_GetHowtoApplySetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\InstitutionAttributeSetup\GlobalCollege_SP_GetInstitutionAttributeSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\InstitutionContactSetup\GlobalCollege_SP_GetInstitutionContactSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\InstitutionHistorySetup\GlobalCollege_SP_GetInstitutionHistorySetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\InstitutionSetup\GlobalCollege_SP_GetInstitutionSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\InstutionAddressSetup\GlobalCollege_SP_GetInstutionAddressSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\LifeAtInstitutionAttributeSetup\GlobalCollege_SP_GetLifeAtInstitutionAttributeSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\LifeAtInstitutionSetup\GlobalCollege_SP_GetLifeAtInstitutionSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\MessageSetup\GlobalCollege_SP_GetMessageSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\NewsSetup\GlobalCollege_SP_GetNewsSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ProgramAttributeSetup\GlobalCollege_SP_GetProgramAttributeSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ProgramSetup\GlobalCollege_SP_GetProgramSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ResearchCategory\GlobalCollege_SP_GetResearchCategoryList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ResearchSetup\GlobalCollege_SP_GetResearchSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ScholarFAQSetup\GlobalCollege_SP_GetScholarFAQSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ScholarSetup\GlobalCollege_SP_GetScholarSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ScholarshipsAttributeSetup\GlobalCollege_SP_GetScholarshipsAttributeSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\ScholarshipsSources\GlobalCollege_SP_GetScholarshipsSourcesList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\TeamAttributeSetup\GlobalCollege_SP_GetTeamAttributeSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\FAQSetup\GlobalCollege_SP_GetFAQSetupList.sql" />
+    <Build Include="Setting\Stored Procedures\GetModuleSetupSummary.sql" />
+    <Build Include="Setting\Stored Procedures\GetStaticDataDetails.sql" />
+    <Build Include="Setting\Stored Procedures\GetTableInformationList.sql" />
+    <Build Include="MenuManagement\Stored Procedures\MenuSetup\GlobalCollege_SP_GetMenuSetupList.sql" />
+    <Build Include="MenuManagement\Stored Procedures\SubMenuSetup\GlobalCollege_SP_GetSubMenuSetupList.sql" />
+    <Build Include="PageManagement\Stored Procedures\LayoutComponentSetup\GlobalCollege_SP_GetLayoutComponentSetupList.sql" />
+    <Build Include="PageManagement\Stored Procedures\LayoutSetup\GlobalCollege_SP_GetLayoutSetupList.sql" />
+    <Build Include="PageManagement\Stored Procedures\PageComponentSetup\GlobalCollege_SP_GetPageComponentSetupList.sql" />
+    <Build Include="PageManagement\Stored Procedures\PageSetup\GlobalCollege_SP_GetPageSetupList.sql" />
+    <Build Include="PageManagement\Tables\PageSetup.sql" />
+    <Build Include="PageManagement\Tables\PageComponentSetup.sql" />
+    <Build Include="PageManagement\Tables\LayoutSetup.sql" />
+    <Build Include="PageManagement\Tables\LayoutComponentSetup.sql" />
+    <Build Include="MenuManagement\Tables\SubMenuSetup.sql" />
+    <Build Include="MenuManagement\Tables\MenuSetup.sql" />
+    <Build Include="Security\PageManagement.sql" />
+    <Build Include="Security\MenuManagement.sql" />
+    <Build Include="PageManagement\Tables\ComponentSetup.sql" />
+    <Build Include="PageManagement\Stored Procedures\ComponentSetup\GlobalCollege_SP_GetComponentSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\TestimonialSetup\GlobalCollege_SP_GetTestimonialSetupList.sql" />
+    <Build Include="ContentManagement\Tables\TestimonialSetup.sql" />
+    <Build Include="ContentManagement\Stored Procedures\AboutUsSetup\GlobalCollege_SP_GetAboutUsSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\BannerSetup\GlobalCollege_SP_GetBannerSetupList.sql" />
+    <Build Include="ContentManagement\Stored Procedures\FacilitySetup\GlobalCollege_SP_GetFacilitySetupList.sql" />
+    <Build Include="ContentManagement\Tables\FacilitySetup.sql" />
+    <Build Include="ContentManagement\Tables\BannerSetup.sql" />
+    <Build Include="ContentManagement\Tables\AboutUsSetup.sql" />
+    <Build Include="Security\ViewComponent.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Banner\GlobalCollege_SP_BannerViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\News\GlobalCollege_SP_NewsViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Team\GlobalCollege_SP_TeamViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Testimonials\GlobalCollege_SP_TestimonialsViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Whyus\GlobalCollege_SP_WhyusViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Widgets\GlobalCollege_SP_WidgetsViewComponentInformation.sql" />
+    <Build Include="ViewComponent\User Defined Types\ViewComponentParameter.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Footer\GlobalCollege_SP_FooterViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Blog\GlobalCollege_SP_BlogViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Course\GlobalCollege_SP_CourseViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Events\GlobalCollege_SP_EventsViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Facts\GlobalCollege_SP_FactsViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Menu\GlobalCollege_SP_MenuViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Message\GlobalCollege_SP_MessageViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Program\GlobalCollege_SP_ProgramViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\LifeatGCI\GlobalCollege_SP_LifeatGCIViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\FAQ\GlobalCollege_SP_FAQViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Donate\GlobalCollege_SP_DonateViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Calender\GlobalCollege_SP_CalenderViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Gallery\GlobalCollege_SP_GalleryViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Scholar\GlobalCollege_SP_ScholarViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Research\GlobalCollege_SP_ResearchViewComponentInformation.sql" />
+    <Build Include="ViewComponent\Stored Procedures\Widgets\GlobalCollege_SP_DetailsViewComponentInformation.sql" />
+    <Build Include="ContentManagement\Tables\FacultyAttributeSetup.sql" />
+    <Build Include="Security\globalremote.sql" />
+    <Build Include="Security\global.sql" />
+    <Build Include="Security\RoleMemberships.sql" />
+    <Build Include="Security\globalremote_1.sql" />
+    <Build Include="Security\global_1.sql" />
+    <Build Include="ContentManagement\Stored Procedures\FacultyAttributeSetup\GlobalCollege_SP_GetFacultyAttributeSetupList.sql" />
+  </ItemGroup>
+</Project>

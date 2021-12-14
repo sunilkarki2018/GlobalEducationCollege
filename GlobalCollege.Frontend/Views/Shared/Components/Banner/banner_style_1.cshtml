@@ -1,0 +1,94 @@
+﻿@model GlobalCollege.Entity.ViewComponent.BannerViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="globalBrand video">
+    @if (Model.VideoBanner != null)
+    {
+        <div class="overlay"></div>
+        <iframe src="@Model.VideoBanner.BannerImageLink"
+                frameborder="0" allowfullscreen></iframe>
+        <div class="video__content">
+            <div class="video__center">
+                <div class="container">
+                    <h2>@Model.VideoBanner.Name</h2>
+
+                    <div class="video__center--quote">
+                        <h3>@Model.VideoBanner.ShortDescription</h3>
+                        <a href="/ContentManagement/ProgramSetup/Index" class="btn-primary btn-global">
+                            Our Programs&nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+                        </a>
+                        <a href="/ContentManagement/AboutUs/Index"
+                           class="btn-primary btn-global btn-border">
+                            Learn more &nbsp;&nbsp;&nbsp;<i class="fa fa-arrow-right"></i>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="news__btm">
+        <h4>Latest News <i class="fas fa-arrow-down pl-3 up-down-animation"> </i></h4>
+
+        <ul class="list-unstyled">
+
+            @foreach (var item in Model.NewsList.OrderBy(x => x.PlacementOrder))
+            {
+                <li>
+                    <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id">
+                        @item.Title <i class="fas fa-angle-right"> </i>
+                    </a>
+
+                </li>
+            }
+
+        </ul>
+    </div>
+    <div class="video__contentbtm">
+        <div class="container">
+            <ul class="list-unstyled">
+                <li>
+                    <a href="/ContentManagement/AdmissionSetup/Index">
+                        <div class="video__flexbtm">
+                            <span class="video__icon"><img src="/img/gradution.svg" alt="education"></span>
+                            <p>admission <br> open</p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="/ContentManagement/EventSetup/Index">
+                        <div class="video__flexbtm">
+                            <span class="video__icon"><img src="/img/calendar.svg" alt="events"></span>
+                            <p>upcoming <br> event</p>
+                        </div>
+                    </a>
+
+                </li>
+                <li>
+                    <a href="/Home/BroucherList">
+                        <div class="video__flexbtm">
+                            <span class="video__icon"><img src="/img/brochure.svg" alt="download"></span>
+                            <p>download <br> broucher</p>
+                        </div>
+                    </a>
+
+                </li>
+
+                <li>
+                    <a href="https://web.globalcollege.edu.np/ContentManagement/gallerycategorysetup">
+                        <div class="video__flexbtm">
+                            <span class="video__icon"><img src="/img/brochure.svg" alt="download"></span>
+                            <p>Gallery</p>
+                        </div>
+                    </a>
+
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+

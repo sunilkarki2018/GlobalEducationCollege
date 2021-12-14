@@ -1,0 +1,80 @@
+﻿CREATE PROC [Setting].[GetModuleSetupSummary]
+AS
+SELECT [Id]
+      ,[ModuleTypeSetupId]
+      ,[Name]
+      ,[ModuleCode]
+      ,[Description]
+      ,[DatabaseTable]
+      ,[ApplicationClass]
+      ,[EntryType]
+      ,[IsParent]
+      ,[ParentModule]      
+      ,[ChangeLogRequired]
+      ,[MakerCheckerRequired]
+      ,[TotalModification]
+      ,[CreatedBy]
+      ,[ModifiedBy]
+      ,[AuthorisedBy]
+      ,[CreatedById]
+      ,[ModifiedById]
+      ,[AuthorisedById]
+      ,[CreatedDate]
+      ,[ModifiedDate]
+      ,[AuthorisedDate]
+      ,[EntityState]
+      ,[RecordStatus]
+      ,[DataEntry]
+	  ,(SELECT [Id]			  
+			  ,[Title]
+			  ,[Name]
+			  ,[Url]
+			  ,[OrderValue]
+        FROM [Setting].[ChildTableInformation] AS ChildTableInformationDTO
+        WHERE ModuleSetupId = ModuleSetupDTO.Id
+        FOR XML PATH('ChildTableInformationDTO'),TYPE, ELEMENTS,ROOT('ChildTableInformations'))   
+      ,(SELECT [Id]
+			  ,[ModuleSetupId]
+			  ,[Name]
+			  ,[ColumnName]
+			  ,[Description]
+			  ,[DataType]
+			  ,[StringLength]
+			  ,[Required]
+			  ,[Position]
+			  ,[HtmlDataType]
+			  ,[HtmlSize]
+			  ,[LabelIcon]
+			  ,[DefaultValue]
+			  ,[FilePath]
+			  ,[CanUpdate]
+			  ,[IsParentColumn]
+			  ,[HelpMessage]
+			  ,[SummaryHeader]
+			  ,[ParameterForSummaryHeader]
+			  ,[IsForeignKey]
+			  ,[ForeignTable]
+			  ,[DataSource]
+			  ,[IsStaticDropDown]
+			  ,[ParameterisedDataSorce]
+			  ,[Parameters]
+			  ,(SELECT [Id]
+                      ,[ModuleBussinesLogicSetupId]
+                      ,[AttributeType]
+                      ,[Value]
+				FROM [Setting].[ModuleHtmlAttributeSetup] AS ModuleHtmlAttributeSetupDTO
+				WHERE ModuleBussinesLogicSetupId = ModuleBussinesLogicSetupDTO.Id
+				FOR XML PATH('ModuleHtmlAttributeSetupDTO'),TYPE, ELEMENTS,ROOT('ModuleHtmlAttributeSetups'))   
+			  ,(SELECT [Id]
+					  ,[ModuleBussinesLogicSetupId]
+					  ,[AttributeType]
+					  ,[Value]
+					  ,[ErrorMessage]    
+				FROM [Setting].[ModuleValidationAttributeSetup] AS ModuleValidationAttributeSetupDTO
+				WHERE ModuleBussinesLogicSetupId = ModuleBussinesLogicSetupDTO.Id
+				FOR XML PATH('ModuleValidationAttributeSetupDTO'),TYPE, ELEMENTS,ROOT('ModuleValidationAttributeSetups')) 
+  FROM [Setting].[ModuleBussinesLogicSetup] AS ModuleBussinesLogicSetupDTO
+  WHERE ModuleSetupId = ModuleSetupDTO.Id
+  FOR XML PATH('ModuleBussinesLogicSetupDTO'),TYPE, ELEMENTS,ROOT('ModuleBussinesLogicSetups'))      
+  FROM [Setting].[ModuleSetup] AS ModuleSetupDTO
+  FOR XML PATH('ModuleSetupDTO'),TYPE, ELEMENTS,ROOT('ModuleSetupList')

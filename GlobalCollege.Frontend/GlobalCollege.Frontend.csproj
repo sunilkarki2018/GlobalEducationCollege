@@ -1,0 +1,123 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Remove="Views\CareerSetupComponent1.cshtml" />
+    <Content Remove="Views\CareerSetupComponent2.cshtml" />
+    <Content Remove="Views\CareerSetupComponent3.cshtml" />
+    <Content Remove="Views\CareerSetupComponent4.cshtml" />
+    <Content Remove="Views\CareerSetupComponent5.cshtml" />
+    <Content Remove="Views\CareerSetupComponent6.cshtml" />
+    <Content Remove="Views\CareerSetupComponent7.cshtml" />
+    <Content Remove="Views\CareerSetupComponent8.cshtml" />
+    <Content Remove="Views\CareerSetupComponent9.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-1.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-10.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-11.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-12.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-13.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-14.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-2.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-3.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-4.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-5.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-6.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-7.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-8.cshtml" />
+    <Content Remove="Views\Shared\Components\Blog\contentblog-style-9.cshtml" />
+    <Content Remove="Views\Shared\Components\Course\course-style-1.cshtml" />
+    <Content Remove="Views\Shared\Components\Course\course-style-2.cshtml" />
+    <Content Remove="Views\Shared\Components\Course\course-style-3.cshtml" />
+    <Content Remove="Views\Shared\Components\Course\course-style-4.cshtml" />
+    <Content Remove="Views\Shared\Components\Course\course-style-5.cshtml" />
+    <Content Remove="Views\Shared\Components\Course\course-style-6.cshtml" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="EntityFramework" Version="6.4.0" />
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.2.4" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <Folder Include="Areas\ContentManagement\Data\" />
+    <Folder Include="Areas\ContentManagement\Models\" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <None Include="Views\Shared\Components\Events\event_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Events\event_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Events\event_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Events\event_style_4.cshtml" />
+    <None Include="Views\Shared\Components\Events\event_style_5.cshtml" />
+    <None Include="Views\Shared\Components\Events\event_style_6.cshtml" />
+    <None Include="Views\Shared\Components\Events\event_style_7.cshtml" />
+    <None Include="Views\Shared\Components\Facts\facts_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Facts\facts_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Facts\facts_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Facts\facts_style_4.cshtml" />
+    <None Include="Views\Shared\Components\Footer\footer_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Footer\footer_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Footer\footer_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Menu\menu_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Message\message_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Message\message_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Message\message_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Message\message_style_4.cshtml" />
+    <None Include="Views\Shared\Components\Message\message_style_5.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_1.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_2.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_3.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_4.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_5.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_6.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_7.cshtml" />
+    <None Include="Views\Shared\Components\News\news_style_8.cshtml" />
+    <None Include="Views\Shared\Components\Team\team_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Team\team_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Team\team_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Team\team_style_4.cshtml" />
+    <None Include="Views\Shared\Components\Team\team_style_5.cshtml" />
+    <None Include="Views\Shared\Components\Testimonials\testimonials_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Testimonials\testimonials_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Testimonials\testimonials_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Testimonials\testimonials_style_4.cshtml" />
+    <None Include="Views\Shared\Components\Testimonials\testimonials_style_5.cshtml" />
+    <None Include="Views\Shared\Components\Testimonials\testimonials_style_6.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_4.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_5.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_6.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_7.cshtml" />
+    <None Include="Views\Shared\Components\Whyus\whyus_style_8.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_1.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_10.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_11.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_2.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_3.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_4.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_5.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_6.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_7.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_8.cshtml" />
+    <None Include="Views\Shared\Components\Widgets\widget_style_9.cshtml" />
+    <None Include="wwwroot\js\site.js" />
+  </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\GlobalCollege.APIMiddlewareCore\GlobalCollege.APIMiddlewareCore.csproj" />
+    <ProjectReference Include="..\GlobalCollege.Entity\GlobalCollege.Entity.csproj" />
+  </ItemGroup>
+
+</Project>

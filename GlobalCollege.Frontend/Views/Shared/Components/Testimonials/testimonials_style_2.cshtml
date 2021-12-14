@@ -1,0 +1,44 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TestimonialsViewComponentModel
+@{
+    Layout = "";
+}
+<section id="testimonial__eye">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="title_wrapper-style">
+                    <span>Happy clients</span>
+
+                    <h1>Testimonials</h1>
+
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <div class="client__testimonial owl-carousel">
+
+                    @foreach (var item in Model.TestimonialsList)
+                    {
+                        <div>
+                            <div class="testimonial_cover_wraper">
+                                <p>
+                                    @Html.Raw(item.ShortStory)
+                                </p>
+                                <div class="testimonial__caption">
+                                    <div class="testimonial_thumbnail_images-circle">
+                                        <img src="@item.ThumbnailImageLink" alt="">
+                                    </div>
+                                    <div class="testimonial__namecard">@item.Name</div>
+                                    <div class="testimonial__designation">@item.Designation</div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

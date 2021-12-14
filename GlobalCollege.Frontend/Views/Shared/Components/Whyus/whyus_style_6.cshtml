@@ -1,0 +1,24 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WhyusViewComponentModel
+@{
+    Layout = "";
+}
+<section id="sudent-courses">
+    <div class="container">
+        <div class="row">
+            @foreach (var item in Model.Facilities.OrderBy(x => x.PlacementOrder))
+            {
+                <div class="col-lg-4 col-md-4 mb-5">
+                    <img src="@item.ThumbnailImageLink" class="w-100" alt="food">
+                    <h2>@item.Title</h2>
+
+                    <p>
+                        @Html.Raw(item.ShortDescription)
+                    </p> <a href="/ContentManagement/FacilitySetup/Details?Id=@item.Id">
+                        Read More <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+            }
+        </div>
+    </div>
+</section>

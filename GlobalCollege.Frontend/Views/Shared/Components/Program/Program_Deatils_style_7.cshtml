@@ -1,0 +1,93 @@
+﻿@model GlobalCollege.Entity.ViewComponent.ProgramViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div style="background-image: url(@Url.Content(Model.Program.BannerImageLink.Replace(@"\","/")));background-repeat: no-repeat;padding: 450px 0 355px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="header_text-white" style="color:white">
+                    <h2>@Model.Program.Title</h2>
+                </div>
+            </div>
+            <div class="col-lg-6" >
+                <span>
+                    We are taking admissions
+                </span>
+                <span>
+                    <a href="/ContentManagement/ProgramSetup/Apply?Id=@Model.Program.Id" class="btn-custom-skyblue">Apply this program</a>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="programsingle__page">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="vertical-tab" role="tabpanel">
+                    <!-- Nav tabs -->
+                    <ul class="nav nav-tabs" role="tablist">
+                        @{
+                            int i = 0;
+                            foreach (var item in Model.Program.ProgramAttributeSetups.OrderBy(o => o.PlacementOrder))
+                            {
+                                string stectionName = string.Format("Section{0}", i);
+                                if (i == 0)
+                                {
+                                    <li role="presentation" class="active">
+                                        <a href="#@stectionName" aria-controls="home" role="tab"
+                                           data-toggle="tab">@item.Title</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li role="presentation">
+                                        <a href="#@stectionName" aria-controls="profile" role="tab"
+                                           data-toggle="tab">
+                                            @item.Title
+                                        </a>
+                                    </li>
+                                }
+
+                                i = i + 1;
+                            }
+                        }
+                    </ul>
+                    <!-- Tab panes -->
+                    <div class="tab-content tabs">
+                        @{
+                            i = 0;
+                            foreach (var item in Model.Program.ProgramAttributeSetups.OrderBy(o => o.PlacementOrder))
+                            {
+                                string stectionName = string.Format("Section{0}", i);
+
+                                if (i == 0)
+                                {
+                                    <div role="tabpanel" class="tab-pane fade in active show" id="@stectionName">
+                                        <div class="vertical__tab-message">
+                                            @Html.Raw(item.DetailDescription)
+                                        </div>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div role="tabpanel" class="tab-pane fade" id="@stectionName">
+                                        <div class="vertical__tab-message">
+                                            @Html.Raw(item.DetailDescription)
+                                        </div>
+                                    </div>
+                                }
+
+                                i = i + 1;
+                            }
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

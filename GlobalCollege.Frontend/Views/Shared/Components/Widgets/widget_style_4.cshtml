@@ -1,0 +1,15 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+@foreach (var item in Model.AdmissionList.OrderBy(o => o.PlacementOrder))
+{
+    <div class="col-lg-4">
+        <div class="card blog-widget mt-5">
+            <img src="@item.ThumbnailImageLink" class="admission open">
+        </div>
+    </div>
+}
+

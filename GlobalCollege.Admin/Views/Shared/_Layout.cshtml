@@ -1,0 +1,428 @@
+﻿@using Microsoft.AspNet.Identity
+@using GlobalCollege.Admin.Utility
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <title>Global College Admin</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link type="image/x-icon" href="~/Image/logo.jpg" rel="icon">
+    <link href="~/bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/bower_components/font-awesome/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/bower_components/Ionicons/css/ionicons.min.css" rel="stylesheet" />
+    <link href="~/dist/css/AdminLTE.css" rel="stylesheet" />
+    <link href="~/dist/css/skins/skin-green.min.css" rel="stylesheet" />
+    <link href="~/Content/Vendors/iCheck/flat/_all.css" rel="stylesheet" />
+    <link href="~/Content/Loader/loader.css" rel="stylesheet" />
+    <link href="~/Content/Vendor/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet" />
+    <link href="~/Content/DropdownSearch/bootstrap-select.min.css" rel="stylesheet" />
+    <link href="~/dist/css/style.css" rel="stylesheet" />
+    <link href="~/Content/digitalagenepal.css" rel="stylesheet" />
+    <link href="~/Scripts/MenuContext/context-menu.min.css" rel="stylesheet" />
+    <link href="~/Scripts/alert/jquery-confirm.min.css" rel="stylesheet" />
+    <link href="~/Content/bootstraptoggle/bootstrap-toggle.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="~/Content/Froala/froala_editor.css">
+    <link rel="stylesheet" href="~/Content/Froala/froala_style.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/code_view.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/draggable.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/colors.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/emoticons.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/image_manager.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/image.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/line_breaker.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/table.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/char_counter.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/video.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/fullscreen.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/file.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/quick_insert.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/help.css">
+    <link rel="stylesheet" href="~/Content/Froala/third_party/spell_checker.css">
+    <link rel="stylesheet" href="~/Content/Froala/plugins/special_characters.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.css">
+
+    <style>
+        .btn-group-sm > .btn, .btn-sm {
+            padding: 5px 10px;
+            font-size: 12px;
+            line-height: 1.5;
+            border-radius: 3px;
+            height: 24px !important;
+        }
+        .fr-wrapper > div > a {
+            display: none !important;
+        }
+    </style>
+</head>
+<body class="hold-transition skin-blue sidebar-mini sidebar-collapse fixed">
+    <!-- Site wrapper -->
+    <div class="wrapper">
+        <div class="loader-wrap" id="loader-wrapper" style="display:none;">
+            <div class="loader">
+                <div class="three rotating-3"></div>
+                <div class="two rotating-2"></div>
+                <div class="one">
+                    <img src="~/Image/logo.jpg" />
+                </div>
+            </div>
+        </div>
+        <header class="main-header">
+            <a href="/" class="logo">
+                <span class="logo-mini">
+                    <img src="~/Image/logo.jpg" style="width: 40px;" />
+                </span>
+                <span class="logo-lg">
+                    <img src="~/Image/logo.jpg" style="width: 140px;" />
+                </span>
+            </a>
+
+            <nav class="navbar navbar-static-top">
+                <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </a>
+                <h2 class="nav-title"><strong>Global College Content Management</strong></h2>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+
+                        <li class="dropdown user user-menu">
+                            <a href="/Content/UserManual.pdf" class="dropdown-toggle">
+                                <span class="hidden-xs"> Operation Manual </span>
+                            </a>
+                        </li>
+
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                <img src="/Image/Profile/defaultUser.jpg" class="user-image" alt="User Image">
+                                <span class="hidden-xs">@string.Format("{0}-{1} LogOff", ViewUserInformation.Fullname(), ViewUserInformation.GetBranch())</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="user-footer">
+                                    <div class="pull-left">
+                                        <a href="/Manage/ChangePassword" class="btn btn-default btn-flat">Change Password</a>
+                                    </div>
+                                    <div class="pull-right">
+                                        <a href="/Account/LogOff" class="btn btn-default btn-flat">Sign out</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+
+        <aside class="main-sidebar">
+            <!-- sidebar: style can be found in sidebar.less -->
+            <section class="sidebar">
+                <!-- Sidebar user panel -->
+                <div class="user-panel">
+                    <div class="pull-left image">
+                        <img src="@ViewUserInformation.GetCurrentUserProfileImage()" class="img-circle" alt="User Image">
+                    </div>
+                    <div class="pull-left info">
+                        <p>@ViewUserInformation.Fullname() @ViewUserInformation.GetBranch()</p>
+                        <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+
+                    </div>
+
+                </div>
+
+
+                <ul class="sidebar-menu" data-widget="tree">
+                    @{
+                        var menuList = GlobalCollege.Admin.Utility.MenuHelper.MenuHelper.GetMenuByLogin();
+                        if (menuList != null)
+                        {
+                            foreach (GlobalCollege.Admin.Models.MenuModel item in menuList)
+                            {
+                                <li class="treeview">
+
+                                    <a href="#">
+                                        <i class="fa @item.IconName"></i> <span>@item.MenuHeadName</span>
+                                        <span class="pull-right-container">
+                                            <i class="fa fa-angle-left pull-right"></i>
+                                        </span>
+                                    </a>
+                                    @if (item.SubmenuList.Count > 0)
+                                    {
+                                        <ul class="treeview-menu">
+                                            @foreach (GlobalCollege.Admin.Models.SubMenu submenu in item.SubmenuList)
+                                            {
+                                                <li><a href="@submenu.Url"><i class="fa  fa-hand-o-right"></i> @submenu.SubModuleName</a></li>
+                                            }
+
+                                        </ul>
+                                    }
+                                </li>
+                            }
+                        }
+                    }
+                </ul>
+            </section>
+
+        </aside>
+
+        <div class="content-wrapper">
+            <section class="content" id="irm-workspace">
+                <div id="main-workspace" style="margin-top:10px;">
+                    @RenderBody()
+                </div>
+                <div class="modal fade" id="cofirmMessgae" tabindex="-1" role="dialog" aria-labelledby="cofirmMessgae" aria-hidden="true">
+                    <div class="modal-dialog modal-sm">
+                        <div class="modal-content">
+                            <div id="confirmresponseContent" style="display:none">
+
+                            </div>
+                        </div>
+
+                        <div class="shadow" id="alertDialog" style="display:none;">
+                            <div class="preview-box">
+                                <div class="alert alert-warning">
+                                    <span class="glyphicon glyphicon-ok"></span> <strong>Alert Message</strong>
+                                    <hr class="message-inner-separator">
+                                    <p>
+                                        Requsted action is invalid.
+                                    </p>
+
+                                </div>
+                                <div class="form-group" style="padding-top:5px;">
+                                    <button class="btn icon-btn btn-success" type="button" data-dismiss="modal" style="float:right;margin-right:15px;">
+                                        <span class="glyphicon btn-glyphicon glyphicon glyphicon glyphicon-ok img-circle text-success">
+                                        </span>Ok
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="shadow" id="confirmDialog">
+                            <div class="preview-box">
+                                <div class="alert alert-warning">
+                                    <span class="glyphicon glyphicon-ok"></span> <strong>Confirm Message</strong>
+                                    <hr class="message-inner-separator">
+                                    <p>
+                                        Are your sure you want to complete this action ?. Please mention remarks and click Yes else click No.
+                                    </p>
+
+                                    <div class="form-group">
+                                        <label for="exampleFormControlTextarea1">Remarks</label>
+                                        <textarea class="form-control" id="SubmissionReamrks" rows="3"></textarea>
+                                    </div>
+
+                                </div>
+                                <div class="form-group" style="padding-top:5px;">
+                                    <button class="btn icon-btn btn-success" type="submit" style="float:right;margin-right:15px;" id="confirmOperation">
+                                        <span class="glyphicon btn-glyphicon glyphicon glyphicon glyphicon-ok img-circle text-success">
+                                        </span>Yes
+                                    </button>
+                                    <button class="btn icon-btn btn-danger" data-dismiss="modal" type="submit" style="float:right;margin-right:15px;" id="cancelOperation">
+                                        <span class="glyphicon btn-glyphicon glyphicon glyphicon glyphicon-remove img-circle text-success">
+                                        </span>No
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal modal-primary fade" id="documentPreview" tabindex="-1" role="dialog" aria-labelledby="documentPreview" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title"> Document Preview</h4>
+                            </div>
+                            <div class="modal-body" id="documentPreviewBody">
+                                <iframe id="frame" src="" style="width:100%;height:1000px;"></iframe>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-outline pull-left" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                        <!-- /.modal-content -->
+                    </div>
+                    <!-- /.modal-dialog -->
+                </div>
+            </section>
+
+        </div>
+
+        <div id="modal">
+            @RenderSection("Modal", required: false)
+        </div>
+
+        <footer class="main-footer">
+            <div class="pull-right hidden-xs">
+                <b>Version</b> 1
+            </div>
+            <strong>Copyright &copy; 2018--2019 <a href="http://www.voygaeritnepal.com/">Voyager IT</a>.</strong> All rights
+            reserved.
+        </footer>
+
+        <div class="control-sidebar-bg"></div>
+    </div>
+
+
+
+    <script src="~/Scripts/jquery-3.2.1.min.js"></script>
+    <script src="~/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/Scripts/vendor/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="~/Scripts/vendor/fastclick/fastclick.js"></script>
+    <script src="~/dist/js/adminlte.js"></script>
+    <script src="~/dist/js/demo.js"></script>
+    <script src="~/bower_components/bootstrap/js/tooltip.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/vendor/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+    <script src="~/Scripts/vendor/bootstrap-datepicker/bootstrap-timepicker.min.js"></script>
+    <script src="~/Scripts/app/notification/notification.js"></script>
+    <script src="~/Scripts/app/bootstrapJs/initializerDataSource.js"></script>
+    <script src="~/Scripts/app/bootstrapJs/initializer.js"></script>
+    <script src="~/Scripts/app/commonService/dataSource.js"></script>
+    <script src="~/Scripts/app/commonService/commonService.js"></script>
+    <script src="~/Scripts/Dropdown/bootstrap-select.js"></script>
+    <script src="~/Scripts/alert/jquery-confirm.min.js"></script>
+    <script src="~/Scripts/bootstraptoggle/bootstrap-toggle.js"></script>
+    <script src="~/Scripts/mask/inputmask.js"></script>
+    <script src="~/Scripts/mask/inputmask.extensions.js"></script>
+    <script src="~/Scripts/mask/inputmask.numeric.extensions.js"></script>
+    <script src="~/Scripts/mask/inputmask.date.extensions.js"></script>
+    <script src="~/Scripts/mask/jquery.inputmask.js"></script>
+    <script src="~/Scripts/dateconverter.js"></script>
+    <script src="~/Scripts/Export2Excel/jquery.table2excel.js"></script>
+    <script src="~/Scripts/iCheck/icheck.js"></script>
+
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/codemirror.min.js"></script>
+    <script type="text/javascript"
+            src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.3.0/mode/xml/xml.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/froala_editor.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/align.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/char_counter.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/code_beautifier.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/code_view.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/colors.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/draggable.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/emoticons.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/entities.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/file.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/font_size.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/font_family.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/fullscreen.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/image.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/image_manager.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/line_breaker.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/inline_style.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/link.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/lists.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/paragraph_format.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/paragraph_style.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/quick_insert.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/quote.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/table.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/save.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/url.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/video.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/help.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/print.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/third_party/spell_checker.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/special_characters.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/Froala/plugins/word_paste.min.js"></script>
+
+
+
+    <script src="~/Scripts/app/custom/dataSourceBootstrap.js"></script>
+    <script src="~/Scripts/app/custom/applicationBootstraper.js"></script>
+
+    <script src="~/Scripts/Dropdown/cascadingdropdownDataSource.js"></script>
+    <script src="~/Scripts/Dropdown/cascadingdropdown.js"></script>
+
+    @RenderSection("scripts", required: false)
+
+    <script type="text/javascript" language="javascript">
+
+        $(document).ready(function () {
+            $('.sidebar-menu').tree();
+            $('select').selectpicker({
+                liveSearch: true,
+                liveSearchNormalize: false,
+                liveSearchPlaceholder: 'Please type search the records'
+
+            });
+            $(":input").inputmask();
+        });
+
+        //$('input').iCheck({
+        //    checkboxClass: 'icheckbox_square',
+        //    radioClass: 'iradio_square',
+        //    increaseArea: '20%' // optional
+        //});
+
+        $('.datepicker input').datepicker({
+        });
+
+
+        (function ($) {
+            var defaultOptions = {
+                errorClass: 'has-error',
+                validClass: 'has-success',
+                highlight: function (element, errorClass, validClass) {
+                    $(element).closest(".form-group")
+                        .addClass(errorClass)
+                        .removeClass(validClass);
+                    if ($($(element).parent().find('label i')).length > 0) {
+                        $(element).parent().find('label i').addClass('fa-remove')
+                            .removeClass('fa-question-circle');
+                    } else {
+                        $(element).parent().parent().find('label i').addClass('fa-remove')
+                            .removeClass('fa-question-circle');
+                    }
+
+                },
+                unhighlight: function (element, errorClass, validClass) {
+                    $(element).closest(".form-group")
+                        .removeClass(errorClass)
+                        .addClass(validClass);
+
+                    if ($($(element).parent().find('label i')).length > 0) {
+                        $(element).parent().find('label i').addClass('fa-check')
+                            .removeClass('fa-question-circle');
+                        $(element).parent().find('label i').addClass('fa-check')
+                            .removeClass('fa-remove');
+                    } else {
+                        $(element).parent().parent().find('label i').addClass('fa-check')
+                            .removeClass('fa-question-circle');
+                        $(element).parent().parent().find('label i').addClass('fa-check')
+                            .removeClass('fa-remove');
+                    }
+                }
+            };
+
+            $.validator.setDefaults(defaultOptions);
+
+            $.validator.unobtrusive.options = {
+                errorClass: defaultOptions.errorClass,
+                validClass: defaultOptions.validClass,
+            };
+
+        })(jQuery);
+
+
+
+
+
+    </script>
+
+
+</body>
+</html>

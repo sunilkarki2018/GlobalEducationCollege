@@ -1,0 +1,64 @@
+﻿@model GlobalCollege.Entity.DTO.FrontendPageInformation
+@{
+    ViewData["Title"] = Model.Title;
+}
+
+
+<main class="home-page">
+    @try
+    {
+
+        int totalPlaceHolder = Model.PageComponents.Select(s => s.PlacementOrder).Distinct().Count();
+
+        @for (int i = 1; i <= totalPlaceHolder; i++)
+        {
+            var componets = Model.PageComponents.Where(p => p.PlacementOrder == i).ToList();
+
+            if (componets.Count() > 1)
+            {
+                <div class="row">
+
+                    @foreach (var component in componets.OrderBy(o => o.ComponentPlacementType))
+                    {
+                        <div class="col-md-@component.ComponentPresenceType">
+
+                            @if (component.DisplayOption)
+                            {
+                                @await Component.InvokeAsync(component.ComponentCategory, new { ComponentName = component.ComponentName, ProcedureName = component.ProcedureName, Id = Model.RecordId, Parameters = Model.Parameters });
+                            }
+
+                        </div>
+                    }
+
+                </div>
+            }
+            else
+            {
+                var component = componets.FirstOrDefault();
+
+                if (component != null)
+                {
+                    @if (component.DisplayOption)
+                    {
+                        @await Component.InvokeAsync(component.ComponentCategory, new { ComponentName = component.ComponentName, ProcedureName = component.ProcedureName, Id = Model.RecordId, Parameters = Model.Parameters });
+                    }
+                }
+            }
+
+        }
+
+    }
+    catch (Exception ex)
+    {
+        <div>
+            
+        </div>
+    }
+
+
+</main>
+
+
+
+
+

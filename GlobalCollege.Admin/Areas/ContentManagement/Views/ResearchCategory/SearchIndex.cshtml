@@ -1,0 +1,100 @@
+@model GlobalCollege.Entity.DTO.ModuleSummary
+@using System.Data
+@{
+    Layout = "";
+}
+
+<table class="table table-bordered searchme-table">
+    <thead>
+        <tr>
+            <th>#</th>
+            @foreach (var column in Model.moduleBussinesLogicSummaries.Where(c => c.HtmlDataType != "hidden" && c.SummaryHeader).OrderBy(o => o.Position))
+            {
+                
+                <th nowrap> @column.Name </th>
+            }
+            <th>Modified Date</th>
+            <th>Modified By</th>
+            <th>Total Modification</th>
+            <th>Entity State</th>
+            <th>Record Status</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int i = 1;
+            string _class = string.Empty;
+            foreach (System.Data.DataRow item in Model.SummaryRecord.Results.Rows)
+            {
+                if ((GlobalCollege.Entity.RecordStatus)Enum.Parse(typeof(GlobalCollege.Entity.RecordStatus), item["RecordStatus"].ToString()) == GlobalCollege.Entity.RecordStatus.Unauthorized)
+                {
+                    _class = "warning";
+                }
+                else if ((GlobalCollege.Entity.RecordStatus)Enum.Parse(typeof(GlobalCollege.Entity.RecordStatus), item["RecordStatus"].ToString()) == GlobalCollege.Entity.RecordStatus.Inactive)
+                {
+                    _class = "danger";
+                }
+                else
+                {
+                    _class = "success";
+
+                }
+                <tr class="@_class">
+                    <td scope="row"> @i </td>
+
+                    @foreach (var column in Model.moduleBussinesLogicSummaries.Where(c => c.HtmlDataType != "hidden" && c.SummaryHeader).OrderBy(o => o.Position))
+                    {
+
+                        if (!column.ColumnName.Contains("PageCount") && !column.ColumnName.Contains("TotalRecords") && (!column.ColumnName.Contains("Id") || column.HtmlDataType != "hidden"))
+                        {
+                            if (column.ColumnName == "Record Status")
+                            {
+                                <td nowrap> @Enum.Parse(typeof(GlobalCollege.Entity.RecordStatus), item[column.ColumnName].ToString()).ToString() </td>
+                            }
+                            else if (column.ColumnName == "EntityStatus" && !string.IsNullOrEmpty(item[column.ColumnName].ToString()))
+                            {
+                                <td nowrap> @Enum.Parse(typeof(GlobalCollege.Entity.Enum.GlobalCollegeEntityState), item[column.ColumnName].ToString()).ToString() </td>
+                            }
+                            else
+                            {
+                                <td nowrap>@(column.DataType.ToLower() != "guid" && Model.SummaryRecord.Results.Columns.Contains(column.ColumnName) ? item[column.ColumnName].ToString() : Model.SummaryRecord.Results.Columns.Contains(column.Name) ? item[column.Name].ToString() : "") </td>
+                            }
+                        }
+                    }
+                    <td nowrap>@item["ModifiedDate"]</td>
+                    <td nowrap>@item["ModifiedBy"]</td>
+                    <td nowrap>@item["TotalModification"]</td>
+                    <td nowrap>@((GlobalCollege.Entity.Enum.GlobalCollegeEntityState)item["EntityState"])</td>
+                    <td nowrap>@((GlobalCollege.Entity.RecordStatus)item["RecordStatus"])</td>
+                    <td title="Preview Record Detail"><a href="/ContentManagement/ResearchCategory/Details/?Id=@item["Id"].ToString()"><i class="glyphicon glyphicon-hand-right"></i> Preview Deatils</a></td>
+
+                </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>
+<div class="form-group">
+    <div class="col-md-6 col-sm-3 col-xs-12">
+        <nav aria-label="Page navigation" style="float:left;">
+            <ul class="pagination recordSize">
+                <li>
+                    <a href="#" aria-label="Previous">
+                        <span aria-hidden="true">&larr;</span> Records Per Page
+                    </a>
+                </li>
+                <li><a href="#" data-pagesize="10">10</a></li>
+                <li><a href="#" data-pagesize="20">20</a></li>
+                <li><a href="#" data-pagesize="40">40</a></li>
+                <li><a href="#" data-pagesize="50">50</a></li>
+                <li><a href="#" data-pagesize="100">100</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div class="col-md-6 col-sm-3 col-xs-12">
+        <nav aria-label="Page navigation" style="float:right;">
+            @Html.RenderPager(Model.SchemaName, Model.ModuleSummaryName, "SearchIndex", (int)Math.Ceiling((decimal)Model.SummaryRecord.RowCount / ((decimal)Model.SummaryRecord.PageSize == 0 ? 1 : (decimal)Model.SummaryRecord.PageSize)), Model.SummaryRecord.PageSize, Model.SummaryRecord.PageNumber)
+        </nav>
+    </div>
+</div>

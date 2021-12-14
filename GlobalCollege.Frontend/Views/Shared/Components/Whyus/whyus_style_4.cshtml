@@ -1,0 +1,38 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WhyusViewComponentModel
+@{ 
+    Layout = "";
+}
+
+<section class="homeAbout">
+    <div class="container">
+        <div class="text-center homeAbout__width">
+            <h1>About Institute</h1>
+
+            <p>
+               @Model.Description
+            </p>
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model.InstitutionAttributeList.OrderBy(x => x.PlacementOrder))
+            {
+                <div class="col* col-md-4 col-lg-4 homeAbout__featureList">
+                    <div class="home__featureBox">
+                        <div class="d-flex align-items-center">
+                            <figure>
+                                <img src="@item.ThumbnailImageLink" alt="title" class="">
+                            </figure>
+                            <h2>@item.Title</h2>
+
+                        </div>
+                        <p>
+                            @Html.Raw(item.ShortDescription)
+                        </p>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+    </div>
+</section>

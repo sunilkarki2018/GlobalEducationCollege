@@ -1,0 +1,49 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+}
+
+<section id="events-single">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-lg-8">
+                <div class="event-content">
+                    <img src="@Model.NewsDetails.BannerImageLink" class="w-100 mb-4" alt="event-image">
+
+                    @Html.Raw(Model.NewsDetails.DetailDescription)
+                </div>
+            </div>
+            <div class="col-md-12 col-lg-4">
+                <div class="event-sidebar">
+                    <div class="event-menu">
+                        <h2>
+                            Upcoming Events
+                        </h2>
+                        @foreach (var eventItem in Model.EventList.OrderBy(x => x.PlacementOrder))
+                        {
+                            <div class="event-sideBox">
+                                <div class="date">
+                                    <h2>@eventItem.EventDate.Day</h2>
+                                    <span>@eventItem.EventDate.ToString("MMM")</span>
+
+                                </div>
+                                <div class="info">
+                                    <a href="/ContentManagement/EventSetup/Details?Id=@eventItem.Id"><h2>@eventItem.Title</h2></a>
+                                    <span><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;&nbsp; @eventItem.Time &nbsp;&nbsp; <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp; @eventItem.Venue</span>
+
+                                </div>
+                            </div>
+                        }
+                    </div>
+
+                    @foreach (var admission in Model.AdmissionList.OrderBy(o => o.PlacementOrder))
+                    {
+                        <div class="card blog-widget mt-5">
+                            <img src="@admission.ThumbnailImageLink" class="admission open">
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,51 @@
+﻿@using GlobalCollege.Entity.Validation
+@model List<GlobalCollegeValidationResult>
+@{
+    Layout = "";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="box">
+            <div class="box-header with-border">
+                <h3 class="box-title">Validation Failed Notification</h3>
+            </div>
+            <div class="box-body">
+                @foreach (var onlineValidationResult in Model)
+                {
+                    <div class="box">
+                        <div class="box-body">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10px">#</th>
+                                        <th>Validation Attribute</th>
+                                        <th>Message</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    @{
+                                        int _counter = 1;
+
+                                        foreach (var validationResultDetails in onlineValidationResult.ValidationResultDetails)
+                                        {
+                                            <tr>
+                                                <td style="width: 10px">@_counter</td>
+                                                <td>@validationResultDetails.Title</td>
+                                                <td>@validationResultDetails.ErrorMessage</td>
+                                            </tr>
+
+                                            _counter = _counter + 1;
+                                        }
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>

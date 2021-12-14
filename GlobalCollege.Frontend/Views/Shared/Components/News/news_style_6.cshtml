@@ -1,0 +1,71 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="news__blogEye">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="title_wrapper-style">
+                            <span>Blogs</span>
+
+                            <h1>Our Blogs</h1>
+
+                        </div>
+                    </div>
+                    @foreach (var item in Model.BlogList)
+                    {
+                        <div class="col-lg-12">
+                            <div class="blog_informationEye">
+                                <span>@item.BlogDate.Month <span>@item.BlogDate.Day,@item.BlogDate.Year</span></span> <a href="/ContentManagement/BlogSetup/Details?Id=@item.Id"><h4>@item.Title</h4></a>
+
+                                <p>
+                                    @Html.Raw(item.ShortDescription)
+                                </p>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+            </div>
+            <div class="col-lg-6 ml-auto">
+                <div class="red_images_background">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="title_wrapper-style">
+                                <span>News</span>
+
+                                <h1>Our Blogs</h1>
+
+                            </div>
+                        </div>
+                        @foreach (var item in Model.NewsList.OrderBy(x => x.PlacementOrder))
+                        {
+                            <div class="col-lg-12">
+                                <div class="blog__wrapper_eye_3">
+                                    <div class="image_gaper" style="background-image: url('@item.ThumbnailImageLink');"></div>
+                                    <div class="description__waraper_eye_4">
+                                        <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id"><h6>@item.Title</h6></a>
+
+                                        <p>
+                                            @Html.Raw(item.ShortDescription)
+                                        </p> <span>@item.NewsDate <span>@item.Tags</span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

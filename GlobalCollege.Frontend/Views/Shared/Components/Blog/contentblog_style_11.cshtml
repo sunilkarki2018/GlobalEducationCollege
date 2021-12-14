@@ -1,0 +1,26 @@
+﻿@model GlobalCollege.Entity.ViewComponent.BlogViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="alu-message" style="background-image: url(/img/alu-man.jpg);">
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-md-6 offset-lg-6 pl-lg-5">
+                <div class="message pl-lg-5">
+                    <h2>
+                        @Model.Message.MessageBy
+                    </h2>
+                    <span class="name">@Model.Message.Designation</span>
+
+                    <p>
+                        @Html.Raw(Model.Message.ShortDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

@@ -1,0 +1,45 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TestimonialsViewComponentModel
+@{
+    Layout = "";
+}
+
+
+<!-- TESTIMONIAL CAROUSEL V1 -->
+<section id="ourInstitution">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row justify-content-center">
+                    <div class="col-lg-10">
+                        <h5>Success Stories</h5>
+
+                        <div class="success_story owl-carousel">
+
+                            @foreach (var item in Model.TestimonialsList)
+                            {
+                                <div class="row no-gutters">
+                                    <div class="slideMe_wrappper wow bounceInRight col-md-4">
+                                        <div class="message_box__">
+                                            <p>
+                                                @Html.Raw(item.ShortStory)
+                                            </p>
+                                            <div class="message_by">
+                                                <p>@item.Name</p> <span>@string.Format("{0}-{1}", item.Year.Year, item.Designation)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <figure class="col-md-8">
+                                        <img src="@item.ThumbnailImageLink" alt="">
+                                    </figure>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- TESTIMONIAL CAROUSEL V1 -->

@@ -1,0 +1,169 @@
+﻿@model GlobalCollege.Entity.ViewComponent.MenuViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<header>
+    <div class="header__width">
+        <div class="header__flex">
+            <div class="header__left">
+                <!-- Navbar -->
+                <nav class="navbar navbar-expand-lg navbar-light white">
+                    <figure>
+                        <a href="/">
+                            <img src="@Model.LogoLink" alt="title">
+                        </a>
+                    </figure>
+                    <!-- Collapse button -->
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent1"
+                            aria-controls="navbarSupportedContent1" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+
+                    </button>
+                    <!-- Collapsible content -->
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent1">
+                        <!-- Links -->
+                        <ul class="navbar-nav mr-auto">
+                            @foreach (var menu in Model.MenuList.OrderBy(o => o.PlacementOrder))
+                            {
+
+                                <li class="nav-item dropdown mega-dropdown">
+
+
+                                    <a class="nav-link dropdown-toggle"
+                                       id="programsNav" data-toggle="dropdown"
+                                       aria-haspopup="true" aria-expanded="false">
+                                        @menu.Title
+                                        <span class="sr-only">(current)</span>
+                                    </a>
+
+                                    <div class="dropdown-menu mega-menu v-1 z-depth-1 white py-5 px-3"
+                                         aria-labelledby="navbarDropdownMenuLink1">
+                                        <div class="row">
+
+                                            @foreach (var subHeaderMenu in menu.SubMenuSetups.Where(s => s.SubMenuType == "Header").OrderBy(o => o.PlacementOrder))
+                                            {
+
+                                                <div class="col-md-6 col-xl-4 sub-menu mb-xl-0 mb-5">
+                                                    <h2 class="menu-titles">@subHeaderMenu.Title</h2>
+
+                                                    <ul class="list-unstyled">
+                                                        @foreach (var submenu in menu.SubMenuSetups.Where(x => x.ParentSubMenuSetupId == subHeaderMenu.Id && x.SubMenuType == "SubMenuList").ToList().OrderBy(o => o.PlacementOrder))
+                                                        {
+                                                            <li class="sub-title">
+                                                                <a class="menu-item pl-1 mt-2"
+                                                                   href="@submenu.RedirectLink">
+                                                                    @submenu.Title
+                                                                </a>
+
+                                                            </li>
+                                                        }
+                                                    </ul>
+                                                </div>
+                                            }
+
+                                            @{
+                                                var Advertisement = menu.SubMenuSetups.Where(x => x.MenuSetupId == menu.Id && x.SubMenuType == "Advertisement").FirstOrDefault();
+                                                if (Advertisement != null)
+                                                {
+                                                    <div class="col-md-7 col-xl-4 sub-menu mb-xl-0 mb-4">
+                                                        <a href="@Advertisement.RedirectLink"
+                                                           class="view overlay z-depth-1 p-0 my-3">
+                                                            <img src="@Advertisement.ThumbnailImageLink">
+                                                        </a>
+
+                                                    </div>
+                                                }
+
+                                            }
+
+                                            @{
+                                                var UpdateList = menu.SubMenuSetups.Where(x => x.MenuSetupId == menu.Id && x.SubMenuType == "UpdateList").ToList();
+
+                                                @if (UpdateList != null && UpdateList.Count() > 0)
+                                                {
+
+                                                    int counter = (int)Math.Ceiling((decimal)(UpdateList.Count() / 3.0));
+
+                                                    for (int i = 1; i <= counter; i++)
+                                                    {
+                                                        <div class="col-md-12 col-xl-4 sub-menu mb-md-0 mb-xl-0 mb-4">
+                                                            <h2 class="menu-titles">@menu.Title</h2>
+                                                            @foreach (var update in UpdateList.OrderBy(o => o.PlacementOrder).Skip(3 * (i - 1)).Take(3))
+                                                            {
+                                                                <div class="news-single">
+                                                                    <div class="row">
+                                                                        <div class="col-md-4">
+                                                                            <!--Image--> <a href="@update.RedirectLink"
+                                                                                            class="view overlay z-depth-1 p-0 my-3">
+                                                                                <img src="@update.ThumbnailImageLink"
+                                                                                     class="img-fluid" alt="First sample image">
+                                                                                <div class="mask rgba-white-slight"></div>
+                                                                            </a>
+
+                                                                        </div>
+                                                                        <div class="col-md-8">
+                                                                            <a class="news-title smaller mt-md-2 pl-0"
+                                                                               href="@update.RedirectLink">
+                                                                                @update.Title
+                                                                            </a>
+                                                                            <p class="font-small text-uppercase text-muted">
+                                                                                @update.ShortDescription
+                                                                            </p> <a href="@update.RedirectLink" class="read-more">
+                                                                                Read
+                                                                                More
+                                                                            </a>
+
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+
+                                                        </div>
+                                                    }
+
+
+
+                                                }
+                                            
+
+                                            }
+                                        </div>
+                                    </div>
+                                </li>
+
+
+                            }
+
+                        </ul>
+                        <!-- Links -->
+                        <!-- Links -->
+                        <div class="header__right ml-auto">
+                            <ul>
+                                <li>
+                                    <img src="/img/phone.svg" class="header__icon"> <span>@string.Join(",", Model.PhoneNumberList.Select(x => string.Format("{0}-{1}", x.CityPrefix, x.PhoneNumber)).ToList())</span>
+                                </li>
+                                <li>
+                                    <a href="http://admin.globalcollege.edu.np/OnlineRegistration" class="btn btn-primary" target="_blank">
+                                        <img src="/img/top-sv.svg" class="header__icon">
+                                        <span>Apply Now</span>
+                                        <i class="fas fa-angle-right"></i>
+                                    </a>
+
+                                </li>
+                            </ul>
+                        </div>
+                        <!-- Links -->
+                    </div>
+                    <!-- Collapsible content -->
+                </nav>
+                <!-- Navbar -->
+            </div>
+        </div>
+    </div>
+</header>
+

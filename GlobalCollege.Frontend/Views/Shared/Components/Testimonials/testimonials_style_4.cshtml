@@ -1,0 +1,26 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TestimonialsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="shortLife">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-lg-6 col-md-6">
+                <img src="@Model.Testimonial.ThumbnailImageLink" alt="studnet" class="w-100">
+            </div>
+            <div class="col-lg-6 col-md-6 pl-5 pr-5 d-flex align-items-center">
+                <div class="testimonial">
+                    <h2>
+                        @Html.Raw(Model.Testimonial.ShortStory)
+                    </h2>
+
+                    <p>@Model.Testimonial.Name / @Model.Testimonial.Designation</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

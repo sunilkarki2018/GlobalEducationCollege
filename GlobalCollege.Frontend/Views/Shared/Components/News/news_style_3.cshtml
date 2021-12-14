@@ -1,0 +1,97 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="college-page">
+    <div class="news-updates">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="section-heading">
+                        <h2 class="text-black">News &amp; Updates</h2>
+                        <a href="/ContentManagement/NewsSetup/Index">Read All News</a>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="post-entry-big">
+                                @foreach (var item in Model.BlogList.OrderBy(x => x.PlacementOrder))
+                                {
+
+                                    <a href="/ContentManagement/BlogSetup/Details?Id=@item.Id" class="img-link">
+                                        <img src="@item.ThumbnailImageLink" alt="Image" class="img-fluid">
+                                    </a>
+
+                                    <div class="post-content">
+                                        <div class="post-meta">
+                                            <a href="#">@item.BlogDate</a>
+                                            <span class="mx-1">/</span>
+
+
+                                        </div>
+                                        <h3 class="post-heading">
+                                            <a href="/ContentManagement/BlogSetup/Details?Id=@item.Id">
+                                                @item.Title
+                                            </a>
+                                        </h3>
+
+                                    </div>
+                                }
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            @foreach (var item in Model.NewsList.OrderBy(x => x.PlacementOrder))
+                            {
+                                <div class="post-entry-big horizontal d-flex mb-4">
+                                    <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id"
+                                       class="img-link mr-4">
+                                        <img src="@item.ThumbnailImageLink" alt="Image" class="img-fluid">
+                                    </a>
+
+                                    <div class="post-content">
+                                        <div class="post-meta">
+                                            <a href="#">@item.NewsDate</a>
+                                            <span class="mx-1">/</span>
+
+
+                                        </div>
+                                        <h3 class="post-heading">
+                                            <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id">
+                                                @item.Title
+                                            </a>
+                                        </h3>
+
+                                    </div>
+                                </div>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="section-heading">
+                        <h2 class="text-black">Campus Videos</h2>
+                        <a href="/ContentManagement/NewsSetup/VideoListNews">View All Videos</a>
+
+                    </div>
+                    @foreach (var item in Model.VideoNewsList.OrderBy(x => x.PlacementOrder))
+                    {
+                        <a href="/ContentManagement/NewsSetup/Details?Id=@item.Id" class="video-1 mb-4" data-fancybox="" data-ratio="2">
+                            <span class="play">
+                                <span class="icon-play"></span>
+                            </span>
+                            <video ssrc="@item.BannerImageLink" alt="Image" class="img-fluid"></video>
+                        </a>
+                    }
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

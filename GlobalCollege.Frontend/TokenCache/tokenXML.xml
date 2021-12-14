@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-16"?>
+<Token xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <AccessToken>mSM-fz-1XR-71lFimm78dlVYoGlNPzxQaNYbHRShsOlC9z6pKGCKrJzyQmeq458Vj4ZjCCPokBDmd0nwhVFJq1wf30uvJojDH1v5_60H4naiR7rWHMADJCl80EASEtSa9fg2HpuPvOCY-s9q9PiK3_pk1hT9VzfdDs909Q5DzX2zp7xfzbC9onsRmh0LLYOJrLFxcWG_o1pSavWQWFp5sEu665JfPurzMQHe1h9u68pyBJ-BJIWAlmAvHtGoHXBJFnihsWrFFWwyE6CFkAHTITodGt74nBuw2O4r3yc9Tnbrw41ok0cXJ4UaZRVxPnIYLBVSUmxTTIfdWk7Szd319XQLJFPkq9h68ilffVpSfT9gqjtvXgvK7XDvR3MyY3mXilJHTitBJvs7sVpaAbYDTDmQLLc4Kf6mL_TRLIuv0899k_CP89ALSjsWvIfy2VSNvykRcjN_fuTVQYRT3u7ArPfU5EXqdY85-IyZhBh6bxPc9vmzDWY0u-i18eEZJGxxWsMDohNYJSiiOEsf5dLThsQikqiLN66Dnq1JMIgi6fdWLoMXz7VYCTxGaSu8JXjGa9iWiUI9j-0VgQjc8yWDHi3V5LP_RiZSuXJg_xPGPG7mL0fg_3GGqzg6KM5l2kKh</AccessToken>
+  <TokenType>bearer</TokenType>
+  <ExpiresIn>1209599</ExpiresIn>
+  <issued>2020-08-01T08:25:30Z</issued>
+  <expires>2020-08-15T08:25:30Z</expires>
+</Token>

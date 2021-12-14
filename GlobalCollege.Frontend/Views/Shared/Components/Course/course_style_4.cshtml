@@ -1,0 +1,61 @@
+﻿@model GlobalCollege.Entity.ViewComponent.CourseViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="homeftCourses sectionTop">
+    <div class="bgParallel" style="background: url(img/bg-03.jpg);">
+        <div class="overlay"></div>
+        <div class="container">
+            <div class="textCenter">
+                <h2 style="color: #0b2e13;">@Html.Raw(Model.Course.ShortDescription)</h2>
+
+            </div>
+        </div>
+        <div class="course-one__top-title__curve"></div>
+    </div>
+    <div class="featureCourse__block">
+        <div class="container">
+            <div class="row">
+                <div class="col* col-md-5 col-lg-5 featureCourse__list">
+                    <figure>
+                        <img src="@Model.Course.ThumbnailImageLink" alt="title" class="w-100">
+                    </figure>
+                    <div class="featureBox">
+                        <h2>@Model.Course.Title</h2>
+
+                        <p>
+                            @Html.Raw(Model.Course.ShortDescription)
+                        </p> <a href="/ContentManagement/CourseSetup/Details?Id=@Model.Course.Id">
+                            Read More <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="col* col-md-7 col-lg-7 featureCourse__col">
+                    <div class="row">
+                        @foreach (var item in Model.Course.CourseAttributeSetups.OrderBy(x => x.PlacementOrder))
+                        {
+                            <div class="col* col-md-6 col-lg-6 featureCourse__list">
+                                <figure>
+                                    <img src="@item.ThumbnailImageLink" alt="title" class="w-100">
+                                </figure>
+                                <div class="featureBox">
+                                    <a href="/ContentManagement/CourseAttributeSetups/Details?Id=@item.Id">
+                                        <h2>
+                                            @item.Title
+                                        </h2>
+                                    </a>
+
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

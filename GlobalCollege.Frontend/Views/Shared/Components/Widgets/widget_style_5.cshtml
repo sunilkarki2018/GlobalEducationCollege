@@ -1,0 +1,77 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WidgetsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="messagesFrom">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card">
+                    <h2>OUR FIRST POINT OF CONTACT</h2>
+
+                    <h3>@Model.Message.Title</h3>
+
+                    <p>
+                        @Html.Raw(Model.Message.ShortDescription)
+                    </p> <a href="ContentManagement/MessageSetup/Details?Id=@Model.Message.Id"
+                            class="btn btn-primary btn-lg">Lean more</a>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h2>UPCOMING EVENT</h2>
+
+                    @foreach (var item in Model.EventList.OrderByDescending(o => o.CreatedDate).OrderBy(o => o.PlacementOrder))
+                    {
+                        <div class="news">
+                            <div class="date">
+                                <h2>@item.EventDate.Day</h2>
+                                <span>@item.EventDate.Month,@item.EventDate.Year</span>
+
+                            </div>
+                            <div class="content">
+                                <p>@item.Time</p> <a href="ContentManagement/EventSetup/Details?Id=@item.Id"><strong>@item.Title</strong></a>
+
+                            </div>
+                        </div>
+                    }
+
+
+
+                    <a href="ContentManagement/EventSetup/Index" class="view-all">View All Events</a>
+
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card">
+                    <h2>TOP STORIES</h2>
+
+                    <div class="owl-carousel stories">
+
+
+                        @foreach (var item in Model.BlogList.OrderByDescending(o => o.CreatedDate).OrderBy(o => o.PlacementOrder))
+                        {
+                            <div class="story">
+                                <div class="story-image">
+                                    <img src="@item.ThumbnailImageLink" alt="story" class="w-100">
+                                </div>
+                                <div class="date-container">
+                                    <a href="ContentManagement/BlogSetup/Details?Id=@item.Id">@item.BlogDate</a>
+
+                                </div>
+                                <h2 class="title">@item.Title</h2>
+                                <a href="ContentManagement/BlogSetup/Details?Id=@item.Id" class="link">Read More <i class="fa fa-angle-right"></i> </a>
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

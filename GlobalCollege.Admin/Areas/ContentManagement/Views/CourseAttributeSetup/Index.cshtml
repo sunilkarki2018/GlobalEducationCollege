@@ -1,0 +1,97 @@
+@model GlobalCollege.Entity.DTO.ModuleSummary
+@{
+    Layout = this.Request.IsAjaxRequest() ? "" : "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("SearchIndex", Model.ModuleSummaryName, new { area = Model.SchemaName }, FormMethod.Post, new { @role = "form", @id = "searchForm" }))
+{
+    @Html.Hidden("PageSize", Model.SummaryRecord.PageSize);
+    @Html.Hidden("PageNumber", Model.SummaryRecord.PageNumber);
+    foreach (var item in Model.moduleBussinesLogicSummaries.Where(h => h.HtmlDataType == "hidden" && h.ParameterForSummaryHeader))
+    {
+        @Html.Hidden(item.ColumnName, item.CurrentValue);
+    }
+    @Html.AntiForgeryToken();
+
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="box box-primary">
+                <div class="box-header" style="padding: 5px; ">
+                    <h5 class="box-title">@Model.ModuleSummaryTitle</h5>
+                </div>
+                <div class="box-body">
+                    <div class="row">
+                        @foreach (var item in Model.moduleBussinesLogicSummaries.Where(P => P.ParameterForSummaryHeader).OrderBy(c => c.Position))
+                        {
+                            if (item.HtmlDataType == "input")
+                            {
+                                <div class="form-group has-feedback col-lg-3">
+                                    <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name</label>
+                                    @Html.TextBox(item.ColumnName, item.CurrentValue ?? item.DefaultValue, item.Attributes)
+                                </div>
+                            }
+                            if (item.HtmlDataType == "textarea")
+                            {
+                                <div class="form-group has-feedback col-lg-12">
+                                    <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name</label>
+                                    @Html.TextArea(item.ColumnName, item.CurrentValue as string ?? item.DefaultValue as string, 5, 20, item.Attributes)
+                                </div>
+                            }
+                            if (item.HtmlDataType == "datalist")
+                            {
+                                <div class="form-group has-feedback col-lg-3">
+                                    <label class="control-label" for="inputSuccess"> <i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name </label>
+                                    @Html.DataList(item.ColumnName, null, item.CurrentValue, item.SelectList.Select(s => new SelectListItem() { Text = s.Text, Value = s.Value, Selected = s.Selected }), item.Attributes)
+                                    <span class="field-validation-valid help-block" data-valmsg-for="@item.ColumnName" data-valmsg-replace="true"></span>
+                                </div>
+                            }
+                            if (item.HtmlDataType == "select")
+                            {
+                                    <div class="form-group has-feedback col-lg-3">
+                                          <label class="control-label" for="inputSuccess"><i class="fa fa-question-circle" data-toggle="tooltip" data-placement="right" title="@item.HelpMessage"></i> @item.Name </label>
+                                          @Html.DropDownList(item.ColumnName, item.SelectList.Select(x=>new SelectListItem() {
+                                                     Text = x.Text,
+                                                     Value = x.Value,
+                                                     Selected = x.Value as object == item.CurrentValue ? true : x.Value == item.DefaultValue ? true: false
+                                    
+                                               }), "--Select--", item.Attributes)
+                                    </div>
+                            }
+                        }
+                        <div class="form-group has-feedback col-lg-3">
+                            <label class="control-label" for="inputSuccess"><i class="fa fa-question-circle"></i> Record Status</label>
+                            @Html.DropDownList("RecordStatus", EnumDropdownList.ToSelectList(GlobalCollege.Entity.RecordStatus.Active), "--Select--", new { @class = "form-control", placeholder = "Select Record Status" })
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <button class="btn icon-btn btn-success btn-flat" type="button" style="float:right;margin-right:15px;" id="searchRecords">
+                            <span class="btn-glyphicon glyphicon glyphicon-search img-circle text-success">
+                            </span>Search
+                        </button>
+                        <button class="btn icon-btn btn-primary btn-flat" type="reset" style="float:right;margin-right:15px;" id="resetForm">
+                            <span class="btn-glyphicon glyphicon glyphicon-refresh img-circle text-warning">
+                            </span>Reset
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="box-footer table-responsive">
+    @if(GlobalCollege.Admin.Utility.AuthorizeViewHelper.IsAuthorize(Model.SchemaName, Model.ModuleSummaryName, GlobalCollege.Entity.CurrentAction.Create))
+    {
+       <div style="margin-bottom:45px; ">
+           <a class="btn icon-btn btn-primary btn-flat" href="/ContentManagement/CourseAttributeSetup/Create" id="addNewChildRecord" style="float:right;margin-right:15px; ">
+               <span class="btn-glyphicon glyphicon glyphicon-plus img-circle text-warning">
+               </span>Add New Record
+           </a>
+       </div>
+    }
+    <div id="RecordsContent">
+        @Html.Partial("SearchIndex", Model)
+    </div>
+</div>
+

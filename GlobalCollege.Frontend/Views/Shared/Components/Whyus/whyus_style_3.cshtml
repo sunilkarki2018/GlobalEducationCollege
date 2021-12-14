@@ -1,0 +1,65 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WhyusViewComponentModel
+@{
+    Layout = "";
+}
+
+
+<section id="whyUs">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h2 class="section-title">We are the best college in town</h2>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <ul>
+                    @foreach (var item in Model.InstitutionAttributeList.OrderBy(x => x.PlacementOrder).Skip(0).Take(3))
+                    {
+                        <li class="wow pulse" style="visibility: visible; animation-name: pulse;">
+                            <div class="icon-i">
+                                <img src="@item.ThumbnailImageLink" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <a href="/ContentManagement/BlogSetup/Details?Id=@item.Id">
+                                    @item.Title
+                                </a>
+
+                                <p>@Html.Raw(item.ShortDescription)</p>
+                            </div>
+                        </li>
+                    }
+
+
+                </ul>
+            </div>
+            <div class="col-md-4 text-center">
+                <img src="/img/cartoon_images.png" class="vert-move " alt="">
+            </div>
+            <div class="col-md-4">
+                <ul>
+                    @foreach (var item in Model.InstitutionAttributeList.OrderBy(x => x.PlacementOrder).Skip(3).Take(3))
+                    {
+                        <li class="wow pulse" style="visibility: visible; animation-name: pulse;">
+                            <div class="icon-i">
+                                <img src="@item.ThumbnailImageLink" alt="">
+                            </div>
+                            <div class="sp-content">
+                                <a href="/ContentManagement/BlogSetup/Details?Id=@item.Id">
+                                    @item.Title
+                                </a>
+
+                                <p>@Html.Raw(item.ShortDescription)</p>
+                            </div>
+                        </li>
+                    }
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+

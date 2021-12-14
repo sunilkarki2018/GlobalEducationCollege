@@ -1,0 +1,83 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FAQViewComponentModel
+@{
+    Layout = "";
+}
+
+@*<style>
+    #collapse-course .btn[aria-expanded="true"] {
+        color: #080808 !important;
+    }
+</style>*@
+
+<section id="faq-page">
+    <div class="container">
+        <div class="row">
+
+            @{
+                int i = 0;
+                foreach (var groupfaq in Model.FAQs.GroupBy(g => g.FAQType))
+                {
+                    <h1>@groupfaq.Key</h1>
+
+                    foreach (var faq in groupfaq)
+                    {
+                        if (i == 0)
+                        {
+                            <div class="col-md-12">
+                                <div class="accordion pt-2" id="collapse-course">
+
+                                    <div class="card">
+                                        <div class="card-header" id="hd-1">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                        data-target="#colp-@i" aria-expanded="true" aria-controls="collapseOne">
+                                                    @faq.Title
+                                                </button>
+                                            </h2>
+
+                                        </div>
+                                        <div id="colp-@i" class="collapse show" aria-labelledby="dt-@i" data-parent="#collapse-course">
+                                            <div class="card-body">
+                                                @Html.Raw(faq.DetailDescription)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="col-md-12">
+                                <div class="accordion pt-2" id="collapse-course">
+
+                                    <div class="card">
+                                        <div class="card-header" id="hd-1">
+                                            <h2 class="mb-0">
+                                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                                        data-target="#colp-@i" aria-expanded="true" aria-controls="collapseOne">
+                                                    @faq.Title
+                                                </button>
+                                            </h2>
+
+                                        </div>
+                                        <div id="colp-@i" class="collapse" aria-labelledby="dt-@i" data-parent="#collapse-course">
+                                            <div class="card-body">
+                                                @Html.Raw(faq.DetailDescription)
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+
+                        i = i + 1;
+                    }
+
+                }
+            }
+
+        </div>
+    </div>
+</section>

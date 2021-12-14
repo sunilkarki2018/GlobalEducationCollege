@@ -1,0 +1,50 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FactsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<!-- facts style 1 -->
+<section id="fact-counter">
+    <div class="container">
+        <div class="row text-center">
+
+            <div class="col">
+                <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="75" data-speed="1500">@Model.Facts.StudentsEnrolled</h2>
+
+                    <p class="count-text ">Students Enrolled</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="89" data-speed="1500">@Model.Facts.CertifiedTeachers</h2>
+
+                    <p class="count-text ">Certified Teachers</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="211" data-speed="1500">@Model.Facts.CompleteCourses</h2>
+
+                    <p class="count-text ">Complete Courses</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="211" data-speed="1500">@Model.Facts.TotalProgram</h2>
+
+                    <p class="count-text ">Total Program</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="counter">
+                    <h2 class="timer count-title count-number" data-to="211" data-speed="1500">@Model.Facts.ForeignFollowers</h2>
+
+                    <p class="count-text ">Foreign Followers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- facts style 1 -->

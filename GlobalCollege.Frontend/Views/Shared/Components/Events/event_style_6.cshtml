@@ -1,0 +1,61 @@
+﻿@model GlobalCollege.Entity.ViewComponent.EventsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="globalEvent globEvent sectionTop">
+    <div class="globEvent__bg" style="background: url(/img/event.jpg);background-size: cover;background-repeat: no-repeat;">
+        <div class="overlay"></div>
+        <div class="globEvent__infos">
+            <div class="container">
+                <div class="global--section global__section--mb">
+                    <p>Event</p>
+                    <h2>
+                        Outstanding Event Experience
+                    </h2>
+
+                    <p class="global__section--desc global__section--tb">
+                        @Html.Raw(Model.EventDescription)
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="globEvent__outer">
+        <div class="container">
+            <div id="globEvent__carousel" class="owl-carousel owl-theme globEvent__slide">
+                @foreach (var item in Model.EventList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="item">
+                        <div class="globEvent__card global--card">
+                            <h4>@item.Title</h4>
+
+                            <p>
+                                @Html.Raw(item.ShortDescription)
+                            </p>
+                            <ul class="list-unstyled">
+                                <li>
+                                    <strong>Venue</strong>
+
+                                </li>
+                                <li>
+                                    <span>@item.Venue</span>
+                                </li>
+                                <li>
+                                    <span>@item.EventDate</span>
+                                </li>
+                            </ul>
+                            <div class="globNews__btn global--btn1">
+                                <a href="/ContentManagement/EventSetup/Details?Id=@item.Id" target="_blank"><i class="fas fa-angle-right"></i></a>
+
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+

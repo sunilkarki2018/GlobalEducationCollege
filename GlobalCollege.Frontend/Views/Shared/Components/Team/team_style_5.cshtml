@@ -1,0 +1,67 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TeamViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section id="our-teachers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="section-title">Our Skilled Instructors</h2>
+
+                <div class="carousel-teacher owl-carousel owl-loaded owl-drag">
+                    <div class="owl-stage-outer">
+                        <div class="owl-stage"
+                             style="transform: translate3d(-960px, 0px, 0px); transition: all 0.25s ease 0s; width: 3120px;">
+                            @foreach (var item in Model.TeamList.OrderBy(x => x.PlacementOrder))
+                            {
+                                <div class="owl-item cloned" style="width: 210px; margin-right: 30px;">
+                                    <div class="teacher-container">
+                                        <a href="#" class="teacher-image-link">
+                                            <img src="@item.ThumbnailImageLink" alt="teacher">
+                                        </a>
+
+                                        <div class="teacher-info">
+                                            <h2>@item.Name</h2>
+
+                                            <p>@Html.Raw(item.Designation)</p>
+                                            <div class="social-links">
+                                                <a href="@item.FacebookLink">
+                                                    <i class="fa fa-facebook"
+                                                       aria-hidden="true"></i>
+                                                </a>
+                                                <a href="@item.FacebookLink"><i class="fa fa-skypek" aria-hidden="true"></i> </a>
+
+                                                <a href="@item.TwitterLink">
+                                                    <i class="fa fa-twitter" aria-hidden="true"></i>
+                                                </a> <a href="@item.LinkedinLink"><i class="fa fa-linkedin" aria-hidden="true"></i> </a>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+
+
+                        </div>
+                    </div>
+                    <div class="owl-nav">
+                        <button type="button" role="presentation" class="owl-prev">
+                            <span aria-label="Previous">‹</span>
+                        </button>
+                        <button type="button" role="presentation" class="owl-next">
+                            <span aria-label="Next">›</span>
+                        </button>
+                    </div>
+                    <div class="owl-dots">
+                        <button role="button" class="owl-dot active"><span></span></button>
+                        <button role="button" class="owl-dot"><span></span></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

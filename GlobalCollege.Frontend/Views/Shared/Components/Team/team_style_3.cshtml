@@ -1,0 +1,52 @@
+﻿@model GlobalCollege.Entity.ViewComponent.TeamViewComponentModel
+@{
+    Layout = "";
+}
+
+<section id="meetOurTeam">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 text-center mb-5">
+                <h2 class="section-title">Our Team</h2>
+
+            </div>
+        </div>
+        <div class="row">
+
+            @foreach (var item in Model.TeamList.OrderBy(x => x.PlacementOrder))
+            {
+                <div class="col-lg-3 col-md-4">
+                    <div class="team-container">
+                        <div class="image">
+                            <img src="@item.ThumbnailImageLink" alt="team">
+                            <div class="image-hover">
+                                <a href="@item.FacebookLink"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="@item.TwitterLink"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+
+                                <a href="@item.LinkedinLink">
+                                    <i class="fa fa-linkedin " aria-hidden="true"></i>
+                                </a> <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+
+                            </div>
+                        </div>
+                        <a href="/ContentManagement/TeamSetup/Details?Id=@item.Id"><h2>@item.Name</h2></a>
+
+                        <p>@item.Designation</p>
+                    </div>
+                </div>
+            }
+
+
+
+        </div>
+        @*<div class="row mt-5 pt-5">
+            <div class="col-md-12 text-center">
+                <a href="/ContentManagement/InstitutionSetup/JoinTeam" class="btn btn-primary">Join Team</a>
+
+            </div>
+        </div>*@
+    </div>
+</section>
+
+
+

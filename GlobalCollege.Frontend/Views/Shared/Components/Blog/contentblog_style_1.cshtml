@@ -1,0 +1,97 @@
+﻿@model GlobalCollege.Entity.ViewComponent.BlogViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 col-md-12">
+            <div class="news__card">
+                <figure>
+                    <img src="@Model.Blog.BannerImageLink" alt="single-blog">
+                    <div class="on-img-date">
+                        <span class="day-month">@Model.Blog.BlogDate.Day @Model.Blog.BlogDate.ToString("MMM")</span>
+                        <span class="year">@Model.Blog.BlogDate.Year</span>
+
+                    </div>
+                </figure>
+                <div class="post_date_update pb-5">
+                    <span><i class="fa fa-user" aria-hidden="true"></i> &nbsp;&nbsp;<strong>By</strong> @Model.Blog.Author</span><span>&nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp; @Model.Blog.ProgramName</span>
+
+                </div>
+                @Html.Raw(Model.Blog.DetailDescription)
+            </div>
+            <div class="content_infomation">
+                <div class="row">
+                    @foreach (var blog in Model.BlogList.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="col-lg-6">
+                            <div class="news__card">
+                                <figure>
+                                    <img src="@blog.ThumbnailImageLink" alt="">
+                                    <div class="on-img-date">
+                                        <span class="day-month">@blog.BlogDate.Day @blog.BlogDate.ToString("MMM")</span>
+                                        <span class="year">@blog.BlogDate.Year</span>
+
+                                    </div>
+                                </figure>
+                                <p>
+                                    <a href="/ContentManagement/BlogSetup/Details?Id=@blog.Id">@blog.Title</a>
+                                </p>
+                                <div class="post_date_update">
+                                    <span><i class="fa fa-user" aria-hidden="true"></i> &nbsp;&nbsp;<strong>By</strong> @blog.Author</span><span>&nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp; @blog.ProgramName</span>
+
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-4">
+            <div class="sidebar-news mt-5 pt-5">
+                <div class="card blog-widget">
+                    <h2 class="widget-title">
+                        Upcoming Events
+                    </h2>
+
+                    @foreach (var eventItem in Model.Events.OrderBy(x => x.PlacementOrder))
+                    {
+                        <div class="event-sideBox">
+                            <div class="date">
+                                <h2>@eventItem.EventDate.Day</h2>
+                                <span>@eventItem.EventDate.ToString("MMM")</span>
+
+                            </div>
+                            <div class="info">
+                                <a href="/ContentManagement/EventSetup/Details?Id=@eventItem.Id"><h2>@eventItem.Title</h2></a>
+                                <span><i class="fa fa-clock" aria-hidden="true"></i>&nbsp;&nbsp; @eventItem.Time &nbsp;&nbsp; <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp; @eventItem.Venue</span>
+
+                            </div>
+                        </div>
+                    }
+                </div>
+                <div class="card blog-widget mt-5">
+                    <h2 class="widget-title">
+                        Our Programs
+                    </h2>
+
+                    <ul class="list-group list-group-flush">
+                        @foreach (var program in Model.Programs.OrderBy(o => o.PlacementOrder))
+                        {
+                            <li class="list-group-item"><a href="/ContentManagement/ProgramSetup/Details?Id=@program.Id"></a> @program.Title</li>
+                        }
+                    </ul>
+                </div>
+                @foreach (var admission in Model.Admissions.OrderBy(o => o.PlacementOrder))
+                {
+                    <div class="card blog-widget mt-5">
+                        <img src="@admission.ThumbnailImageLink" class="admission open">
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

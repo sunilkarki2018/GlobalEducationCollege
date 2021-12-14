@@ -1,0 +1,174 @@
+﻿@model GlobalCollege.Entity.ViewComponent.WhyusViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<div id="donate-wrap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2>@Model.Administration.Title</h2>
+
+                @Html.Raw(Model.Administration.DetailDescription)
+
+                <img src="@Model.Administration.ThumbnailImageLink"
+                     class="mt-5">
+                <div class="donationOptions">
+                    <h2>Departments</h2>
+                    <div class="row">
+                        @foreach (var item in Model.Faculties.OrderBy(o => o.PlacementOrder))
+                        {
+
+                            <div class="col-md-4">
+                                <a href="/ContentManagement/TeamSetup/Index?Parameters=TeamType=;FacultyId=@item.Id&Component=Faculty" class="donation-links">@item.Title</a>
+                            </div>
+
+                        }
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="department-contact">
+                    <h2>Department Contact Info</h2>
+
+                    <h3>+2 Management Program</h3>
+
+                    <p>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>  <span>
+                            Devkotasadak, Mid-Baneshwor,<br>
+                            Kathmandu, Nepal
+                        </span>
+
+                    </p>
+                    <p class="mb-0">
+                        <i class="fa fa-phone" aria-hidden="true"></i>  <span>+977-1-4490023</span>
+
+                    </p>
+                    <p>
+                        <i class="fa fa-envelope" aria-hidden="true"></i>  <span>info@globalcollege.edu.np</span>
+
+                    </p>
+                    <p class="hours">
+                        <i class="fa fa-clock" aria-hidden="true"></i>
+                        <span>Sun – Fri 7:00A.M. – 5:00P.M.</span>
+                    </p>
+                    <h2>Social Info</h2>
+
+                    <div class="social-links">
+                        <a target="_blank" href="https://www.facebook.com/globalcollegeofmanagement/"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                        <a target="_blank" href="https://www.youtube.com/user/globalcollegeofm">
+                            <i class="fa fa-times" aria-hidden="true"></i>
+                        </a>
+                        <a target="_blank" href="https://www.instagram.com/globalcollegeofmanagement/"><i class="fa icon-controller-fast-backward" aria-hidden="true"></i></a>
+
+                    </div> <a target="_blank" href="http://dlgcm.globalcollege.edu.np/login.php?url=%2F&nocookies=true" class="btn btn-primary">Student Resources</a>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <section id="admin-tabs">
+        <div class="container">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+                    <div class="images">
+                        @{
+                            int i = 1;
+                            foreach (var item in Model.InstitutionAttributeList.OrderBy(o => o.PlacementOrder))
+                            {
+                                if (i == 1)
+                                {
+                                    <div class="imageContainer active" data-tab-id="@i">
+                                        <img src="@item.ThumbnailImageLink" alt="images">
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="imageContainer" data-tab-id="@i">
+                                        <img src="@item.ThumbnailImageLink" alt="images">
+                                    </div>
+                                }
+
+                                i = i + 1;
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="custom-tab-container">
+                        <div class="tab-menu">
+                            <ul class="list-unstyled tab-custom-menu">
+                                @{
+                                    i = 1;
+                                    foreach (var item in Model.InstitutionAttributeList.OrderBy(o => o.PlacementOrder))
+                                    {
+                                        if (i == 1)
+                                        {
+                                            <li data-tab-id="@i" class="active">@item.Title</li>
+                                        }
+                                        else
+                                        {
+                                            <li data-tab-id="@i">@item.Title</li>
+                                        }
+
+                                        i = i + 1;
+                                    }
+                                }
+                            </ul>
+                        </div>
+                        @{
+                            i = 1;
+                            foreach (var item in Model.InstitutionAttributeList.OrderBy(o => o.PlacementOrder))
+                            {
+                                if (i == 1)
+                                {
+                                    <div class="data-tab-content active" data-tab-id="@i">
+                                        <h2> @Html.Raw(item.ShortDescription)</h2>
+                                        @Html.Raw(item.DetailDescription)
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="data-tab-content" data-tab-id="@i">
+                                        <h2> @Html.Raw(item.ShortDescription)</h2>
+                                        @Html.Raw(item.DetailDescription)
+                                    </div>
+                                }
+
+                                i = i + 1;
+                            }
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="why-study">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <h2>@Model.WhyStudyHere.Title</h2>
+                    @Html.Raw(Model.WhyStudyHere.DetailDescription)
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="thank-donate">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-5 pl-lg-5 mb-5">
+                    <div class="mt-5">
+                        <a target="_blank" href="http://admin.globalcollege.edu.np/onlineregistration" class="btn btn-primary">Apply Now</a>
+                        <a href="@Model.Administration.FieldString1"
+                           class="btn btn-primary">Download Brochure</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+

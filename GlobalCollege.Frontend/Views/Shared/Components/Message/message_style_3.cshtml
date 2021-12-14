@@ -1,0 +1,36 @@
+﻿@model GlobalCollege.Entity.ViewComponent.MessageViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="about sectionTop">
+    <div class="container">
+        <div class="about__card global--card">
+            <div class="row">
+                <div class="col* col-md-7 col-lg-9 about__left">
+                    <div class="global--section">
+                        <p>messsage</p>
+                        <h2>@Model.Message.Title</h2>
+
+                    </div>
+                    <p class="about--quote">
+                        @Model.Message.Quote
+                    </p>
+                    <p>
+                        @Html.Raw(Model.Message.DetailDescription)
+                    </p>
+                </div>
+                <div class="col* col-md-4 col-lg-3 about__right">
+                    <div class="about__user">
+                        <figure>
+                            <img src="@Model.Message.ThumbnailImageLink" alt="title">
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+

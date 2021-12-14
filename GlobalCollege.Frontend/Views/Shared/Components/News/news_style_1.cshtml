@@ -1,0 +1,89 @@
+﻿@model GlobalCollege.Entity.ViewComponent.NewsViewComponentModel
+@{
+    Layout = "";
+
+}
+
+
+<!-- NEWS WITH EVENT V1 -->
+<section id="latest__update_">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-2">
+                <h4>Latest <br> Update</h4>
+
+            </div>
+            <div class="col-lg-7">
+                <div class="idea__wrapper">
+                    <div class="bulb__">
+                        <figure class="idea__blub">
+                            <a href="/ContentManagement/EventSetup/Details?Id=@Model.News.Id">
+                                <img src="/img/idea__blub.png" alt="">
+                            </a>
+
+                        </figure>
+                    </div>
+                    <div class="date_posted">
+                        <span class="dateof">@Model.News.EventDate.Day</span>
+                        <span class="date_daysAndmonth">@Model.News.EventDate.ToString("MMM") <br> <span>@Model.News.EventDate.ToString("dddd")</span></span>
+                    </div>
+                    <div class="update_info">
+                        <a href="/ContentManagement/EventSetup/Details?Id=@Model.News.Id">
+                            <p>
+                                @Model.News.Title
+                            </p>
+                        </a>
+
+                        <p><i class="fas fa-clock"></i>@Model.News.Time</p>
+                        <p><i class="fas fa-map-marker-alt"></i>@Model.News.Venue</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 d-flex align-items-center">
+                <a href="/ContentManagement/EventSetup/Index" class="btn-custom">
+                    View all Events<i class="fas fa-arrow-right"
+                                      aria-hidden="true"></i>
+                </a>
+
+            </div>
+        </div>
+        <div class="row">
+            @foreach (var item in Model.BlogList.OrderBy(x => x.PlacementOrder))
+            {
+                <div class="col-lg-4">
+                    <div class="news__card wow bounceInUp" data-wow-delay="0.5s">
+                        <figure>
+                            <a href="/ContentManagement/BlogSetup/Details?Id=@item.Id">
+                                <img src="@item.ThumbnailImageLink" alt="">
+                            </a>
+
+                        </figure>
+                        <div class="__caption_card_3">
+                            <p>
+                                <a href="/ContentManagement/BlogSetup/Details?Id=@item.Id">@item.Title</a>
+                            </p>
+                            <div class="post_date_update">
+                                <span>
+                                    <i class="fa fa-user"
+                                       aria-hidden="true"></i> &nbsp;&nbsp;<strong>By</strong> @item.Author
+                                </span><span>
+                                    &nbsp;&nbsp; | &nbsp;&nbsp;<i class="fa fa-tag" aria-hidden="true"></i>&nbsp;&nbsp; @item.ProgramName
+                                </span>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="col-lg-12 text-center">
+                <br>
+                <br> <a href="/ContentManagement/BlogSetup/Index" class="btn-custom ">
+                    View all Blogs<i class="fas fa-arrow-right"
+                                     aria-hidden="true"></i>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- NEWS WITH EVENT V1 -->

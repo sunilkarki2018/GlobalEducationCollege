@@ -1,0 +1,26 @@
+﻿@model BlogInformation
+@{
+    Layout = "";
+
+}
+
+<section class="thank-donate" style="margin-top: 160px">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="@Model.ThumbnailImageLink" alt="thanks-image" style="margin-top: -160px">
+            </div>
+            <div class="col-md-5 pl-lg-5">
+                <p>
+                    @Html.Raw(Model.ShortDescription)
+                </p> <a href="@Model.Link" class="btn btn-primary">
+                    Donate
+                    Now
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+

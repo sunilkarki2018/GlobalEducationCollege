@@ -1,0 +1,149 @@
+﻿@model GlobalCollege.Entity.ViewComponent.FooterViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<footer id="footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 m-auto text-center">
+                <div class="__caption-info">
+                    <p>
+                        @Html.Raw(Model.FooterDescription)
+                    </p>
+                </div>
+                <div class="wrapper_infooter">
+                    <a href="/ContentManagement/ProgramSetup/Index" class="btn-custom ">
+                        View Our Programs<i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+
+                    <a href="/ContentManagement/AboutUsSetup/Index" class="btn-plain">
+                        About College<i class="fas fa-arrow-right"
+                                        aria-hidden="true"></i>
+
+                    </a> <span class="__phone-contactnumber"><i class="fas fa-phone"></i>@string.Join(",", Model.Institution.InstitutionContactSetups.Select(c => c.PhoneNumber))</span>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-2">
+                <figure>
+                    <img src="@Model.Institution.LogoLink" alt="">
+                </figure>
+            </div>
+            <div class="col-lg-2 col-md-3">
+                <div class="__footer-1">
+                    <ul>
+                        <li>
+                            <a href="https://plus2.nepaledufair.com/tour/global/index.htm">College Tour</a>
+
+                        </li>
+                        <li>
+                            <a href="/ContentManagement/FAQSetup/Index">FAQ</a>
+
+                        </li>
+                        <li>
+                            <a href="https://web.globalcollege.edu.np/Details/Index?RecordType=ContentManagement.HowtoApplySetup&Id=3132b44d-9430-45fc-84ea-e5de8c50625c">How To Apply</a>
+
+                        </li>
+                        <li>
+                            <a href="/ContentManagement/EventSetup/Index">Careers</a>
+
+                        </li>
+                        <li>
+                            <a href="https://web.globalcollege.edu.np/Details/Index?RecordType=ContentManagement.InstitutionAttributeSetup&Id=b090cf39-6987-4356-b301-35e2e9715975">International Students</a>
+
+                        </li>
+                        <li>
+                            <a href="https://web.globalcollege.edu.np/Details/Index?RecordType=ContentManagement.InstitutionAttributeSetup&Id=5ef7a790-6a9b-4eea-bade-779f8758ee4d">Current Students</a>
+
+                        </li>
+                        <li>
+                            <a href="https://web.globalcollege.edu.np/Details/Index?RecordType=ContentManagement.InstitutionAttributeSetup&Id=616b697a-c317-478a-8149-8bd520991e0b"> Resources</a>
+
+                        </li>
+                        <li>
+                            <a href="https://web.globalcollege.edu.np/Details/Index?RecordType=ContentManagement.InstitutionAttributeSetup&Id=b6991378-4d35-4aa2-894a-fe6c7debeb78">Alumni</a>
+
+                        </li>
+                        @*<li>
+                            <a href="/ContentManagement/HowToApplySetup/Index">How to Apply</a>
+
+                        </li>
+                        <li>
+                            <a href="/ContentManagement/HowToApplySetup/Index">Apply Today</a>
+
+                        </li>*@
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-3 col-md-8 ">
+                <div class="__footer-2">
+                    <h5>
+                        Programs
+                    </h5>
+
+                    <ul>
+                        @foreach (var item in Model.ProgramList.OrderBy(x => x.PlacementOrder))
+                        {
+                            <li>
+                                <a href="/ContentManagement/ProgramSetup/Details?Id=@item.Id">
+                                    @item.Title
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div>
+            </div>
+            <div class="col-xl-5">
+                <div class="__footer-3">
+                    <ul>
+                        <li>
+                            <span>connect with us</span><span>
+                                <i class="fab fa-facebook-f"></i><i class="fab fa-twitter"></i><i class="fab fa-youtube"></i><i class="fab fa-linkedin-in"></i>
+                            </span>
+
+                        </li>
+                        <li>
+                            <span>Location</span><span>@string.Join(",", Model.Institution.InstutionAddressSetups.Select(s => s.Address)) <br><span>(Get Direction)</span></span>
+                        </li>
+                        <li>
+                            <span>Call Us</span><span>@string.Join(",", Model.Institution.InstitutionContactSetups.Select(c => c.PhoneNumber))</span>
+
+                        </li>
+                        <li>
+                            <span>Email us</span><span><a href="">Write Today</a></span>
+
+                        </li>
+                        <li>
+                            <span>Study with us</span> <span><a href="">Apply Now</a></span>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<div class="for-mobile-bar">
+    <a href="tel:9849451411" class="phone"><i class="fa fa-phone"></i> </a>
+
+    <a href="#" class="phone">
+        <i class="fa fa-map-marker"></i>
+    </a> <a href="#" data-toggle="modal" data-target="#applyForm" class="apply-now">Apply Now</a>
+
+    <a href="#" class="back-top">
+        <i class="fa fa-arrow-up"></i>
+
+    </a>
+</div>
+<a id="back-button"></a>
+

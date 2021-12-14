@@ -1,0 +1,93 @@
+﻿@model GlobalCollege.Entity.ViewComponent.CourseViewComponentModel
+@{
+    Layout = "";
+}
+<div class="header_images _research-background">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 text-center">
+                <div class="header_text-white">
+                    <h2>Search Course</h2>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="course-search">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="search-inputs">
+                    <h2>Search For Courses</h2>
+
+                    <form actio="" method="" id="search">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="keywords" aria-describedby="keywordsHelp" placeholder="Keywords">
+                        </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="courseId" aria-describedby="keywordsHelp" placeholder="Course ID">
+                        </div>
+                        <div class="form-group select">
+                            <select class="form-control">
+                                <option value="">Department</option>
+                                <option value="">Account</option>
+                            </select>
+                        </div>
+                        <div class="form-group select">
+                            <select class="form-control">
+                                <option value="">Campus</option>
+                                <option value="">Account</option>
+                            </select>
+                        </div>
+                        <div class="form-group select">
+                            <select class="form-control">
+                                <option value="">Level</option>
+                                <option value="">Account</option>
+                            </select>
+                        </div>
+                        <div class="form-group select">
+                            <select class="form-control">
+                                <option value="">Instructor</option>
+                                <option value="">Account</option>
+                            </select>
+                        </div>
+                        <div class="form-group select">
+                            <select class="form-control">
+                                <option value="">Semester</option>
+                                <option value="">Account</option>
+                            </select>
+                        </div>
+                        <div class="form-group select">
+                            <select class="form-control">
+                                <option value="">Credit</option>
+                                <option value="">Account</option>
+                            </select>
+                        </div>
+                        <div class="form-group select">
+                            <select class="form-control">
+                                <option value="">Method</option>
+                                <option value="">Account</option>
+                            </select>
+                        </div>
+                        <button class="btn tbn-primary">Search Courses</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-8">
+                @foreach (var course in Model.CourseList.OrderBy(x => x.PlacementOrder))
+                {
+                    <div class="course-search-result">
+                        <h2>@course.Title</h2>
+
+                        @Html.Raw(course.DetailDescription)
+
+                        <a href="/ContentManagement/CourseSetup/Details?Id=@course.Id" class="btn btn-primary">Course Detail</a>
+
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</section>

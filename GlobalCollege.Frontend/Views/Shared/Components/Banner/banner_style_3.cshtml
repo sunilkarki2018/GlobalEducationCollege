@@ -1,0 +1,48 @@
+﻿@model GlobalCollege.Entity.ViewComponent.BannerViewComponentModel
+@{
+    Layout = "";
+
+}
+
+<section class="banner globalBanner">
+    <div class="banner__SliderBox">
+        <div id="banner__Carousel" class="banner__Slider owl-carousel owl-theme">
+            @foreach (var item in Model.BannerList.OrderBy(x => x.PlacementOrder))
+            {
+                <div class="item">
+                    <div class="banner__bg">
+                        <div class="overlay"></div>
+                        <img src="@item.BannerImageLink" alt="title">
+                        <div class="container">
+                            <div class="banner__innerInfo">
+                                <div class="quote__sign">
+                                    <i class="fas fa-quote-left"></i>
+
+                                </div>
+                                <div class="banner__quote">
+                                    <h2>@item.Name</h2>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+
+        </div>
+        <div class="container">
+            <div class="banner__content">
+                <div class="banner__link">
+                    <div class="tour__btn global--btn">
+                        <a href="#">Take a Virtual Tour <i class="fas fa-angle-right"></i></a>
+                    </div>
+
+                    <div class="book__btn global--btn">
+                        <a href="#">Take a Book Tour <i class="fas fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

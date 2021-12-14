@@ -1,0 +1,77 @@
+﻿@model GlobalCollege.Frontend.Models.AppointmentViewModel
+@{
+    Layout = "";
+
+}
+
+<!-- COLLEGE TOUR WITH FORM -->
+<section id="take__tour">
+    <div class="container wow bounceInUp" style="visibility: visible; animation-name: bounceInUp;">
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="takeWrapper_tour">
+                    <h2 class="section-title white">Take A Tour</h2>
+
+                    <p>
+                        Whether you are preparing for your visit or can’t make it in person, use
+                        this virtual tour to explore our college.
+                    </p> <a target="_blank" href="https://plus2.nepaledufair.com/tour/global/index.htm" class="btn-custom">
+                        start
+                        virtual tour <i class="fas fa-arrow-right" aria-hidden="true"></i>
+                    </a>
+
+                </div>
+            </div>
+            <div class="col-lg-7 ml-auto">
+                <div class="form__wrapper">
+                    <p>
+                        Want to get a better feel of our wonderful campus? Want to learn about
+                        the variety of <b>wonderful programs, facilities</b> and <b>services</b> that
+                        we offer? Then drop your info below.
+                    </p>
+                    <form id="requestforappointmentForm" method="post">
+                        <div class="row">
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.FullName, new { @class = "form-control", placeholder = "FullName" })
+                                @Html.ValidationMessageFor(x => x.FullName)
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", placeholder = "Email address" })
+                                @Html.ValidationMessageFor(x => x.Email)
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.MobileNumber, new { @class = "form-control", placeholder = "Mobile Number" })
+                                @Html.ValidationMessageFor(x => x.MobileNumber)
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.Date, new { @type = "date", @class = "form-control", @placeholder = "Pick a date", @min = DateTime.Now.ToShortDateString(), @max = DateTime.Now.AddYears(1).ToShortDateString() })
+                                @Html.ValidationMessageFor(x => x.Date)
+
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.PurposeofVisit, new { @class = "form-control", @placeholder = "Purpose of visit" })
+                                @Html.ValidationMessageFor(x => x.PurposeofVisit)
+
+                            </div>
+                            <div class="col-6">
+                                @Html.TextBoxFor(x => x.NumberofVisitors, new { @class = "form-control", @placeholder = "Number of Visitors" })
+                                @Html.ValidationMessageFor(x => x.NumberofVisitors)
+                            </div>
+                            <div class="col-12 btn_markup_position form_button-position">
+                                @Html.TextAreaFor(x => x.ShortDescription, new { @cols = "30", @rows = "10", @class="form-control",
+                                          placeholder="Do  you have any questions?" })
+                                @Html.ValidationMessageFor(x => x.ShortDescription)
+                                <a href="#" id="requestforAppointment"
+                                   class="btn-custom">
+                                    For Appointment<i class="fas fa-arrow-right" aria-hidden="true"></i>
+                                </a>
+
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- COLLEGE TOUR WITH FORM -->
